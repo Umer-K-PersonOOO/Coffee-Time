@@ -108,7 +108,7 @@ main {
 
 .divider {
   text-align: center;
-  font-size: 6em;
+  font-size: 6rem;
   margin: 20px 0;
   position: relative;
   width: 100%;
@@ -227,7 +227,7 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 8rem;
+  margin-bottom: 5vh;
 }
 
 .image-grid {
@@ -239,7 +239,7 @@ main {
   justify-items: center;
   align-items: center;
   padding: 20px;
-  background-color: #5a3d31;
+  /* background-color: #B3B0A8; */
   border-radius: 30px;
   /* width: 70%; */
   margin: auto;
@@ -255,7 +255,7 @@ main {
 
 .divider-menu {
   text-align: center;
-  font-size: 6em;
+  font-size: 6rem;
   margin: 20px 0;
   position: relative;
   width: 100%;
@@ -277,7 +277,7 @@ main {
   /* align-items: center; */
   margin: 40px 0;
   text-align: center;
-  padding-bottom: 15rem;
+  padding-bottom: 5vh;
 }
 
 .socials-container {
@@ -502,16 +502,46 @@ main {
   }
 }
 
-.iframe-container-2 {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
+
+.menu-container-2 {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Take full viewport height */
+  box-sizing: border-box; /* Include padding in height calculation */
 }
 
-.menu-iframe-2 {
-  position: absolute;
-  top: 0;
-  left: 25%;
-  width: 50%;
-  height: 50%;
+.menu-container-2 iframe {
+  width: 100%;
+  max-width: 816px;
+  height: calc(100% - 40px); /* Subtract padding to avoid overflow */
+  min-height: 550px;
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+@media screen and (min-width: 900px) {
+  .menu-container-2 {
+    height: 600px; /* Take full viewport height */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .menu-container-2 {
+    height: 130vh; /* Take full viewport height */
+  }
+  .menu-container-2 iframe {
+    height: calc(130% + 70px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .divider-menu {
+    font-size: 4rem;
+  -webkit-text-stroke-width: 2px;
+  }
+  .divider {
+  font-size: 4rem;
+  -webkit-text-stroke-width: 2px;
+  }
 }
