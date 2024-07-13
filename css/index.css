@@ -442,6 +442,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 40px; /* Optional: gap between images */
   padding: 5vh;
 }
