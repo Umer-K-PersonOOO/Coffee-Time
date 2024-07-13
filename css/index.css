@@ -458,7 +458,7 @@
 .waitress-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 40px; /* Optional: gap between images */
   padding: 5vh;
 }
