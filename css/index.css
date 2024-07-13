@@ -437,3 +437,32 @@
   -webkit-text-stroke-width: 2px;
   }
 }
+
+.media-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px; /* Optional: gap between images */
+}
+
+.media-container svg {
+  display: inline-block;
+  height: auto;
+  display: block;
+  width: min(20vw, 200px);
+  height: min(20vw, 200px); 
+  
+}
+
+.waitress-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5vh 0;
+}
+
+.waitress-container img {
+  width: min(40vw, 400px); /* Make this propertu screen responsive*/
+  height: auto;
+}
