@@ -444,23 +444,22 @@
   justify-content: center;
   flex-direction: column;
   gap: 40px; /* Optional: gap between images */
-  padding: 5vh;
 }
 
 .media-container svg {
   display: inline-block;
   height: auto;
   display: block;
-  width: min(15vw, 150px);
-  height: min(15vw, 150px);
+  width: min(20vw, 200px);
+  height: min(20vw, 200px); 
+  
 }
 
 .waitress-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 40px; /* Optional: gap between images */
-  padding: 5vh;
+  padding: 5vh 0;
 }
 
 .waitress-container img {
