@@ -437,3 +437,19 @@
   -webkit-text-stroke-width: 2px;
   }
 }
+
+.media-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; /* Optional: gap between images */
+  padding: 5vh;
+}
+
+.media-container svg {
+  display: inline-block;
+  height: auto;
+  display: block;
+  width: min(15vw, 150px);
+  height: min(15vw, 150px);
+}
