@@ -120,14 +120,12 @@ main {
 }
 
 .artists-socials svg {
-  display: inline-block;
-  height: auto;
   display: block;
-  width: min(15vw, 150px);
-  height: min(15vw, 150px);
+  width: min(10vw, 100px);
+  height: min(10vw, 100px);
 }
 
-.artists-socials img {
+.artists-socials-pfp {
   display: inline-block;
   height: auto;
   display: block;

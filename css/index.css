@@ -342,7 +342,6 @@
   border-radius: 4px;
   transition: all 500ms;
   overflow: hidden;
-
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -351,7 +350,6 @@
 .photo-grid {
   display: grid;
   gap: 2rem;
-
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-auto-rows: 400px;
   margin-left: 10%;
