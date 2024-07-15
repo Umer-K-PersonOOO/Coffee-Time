@@ -327,55 +327,49 @@
   }
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #353535;
-  font-size: 3rem;
-  color: #fff;
-  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
-    rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
-  height: 100%;
-  width: 100%;
-  border-radius: 4px;
-  transition: all 500ms;
-  overflow: hidden;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .photo-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-auto-rows: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
   margin-left: 10%;
   margin-right: 10%;
+  gap: 1rem;
+
 }
 
-.card-tall {
-  grid-row: span 2 / auto;
+.card {
+  width: auto;
+  height: 400px; 
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
 }
 
 .card-wide {
-  grid-column: span 2 / auto;
+  height: 370px;
+  width: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .photo-grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .card {
+    width: 40vw;
+    height: auto;
+  }
+
+  .card-wide {
+    width: 80vw;
+    height: auto;
+  }
+  
 }
 
 @media screen and (max-width: 1873px) {
   .image-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  }
-}
-/* Medium screens */
-@media screen and (max-width: 610px) {
-  .photo-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .card-tall {
-    grid-row: auto;
   }
 }
 

@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f1ede5;
@@ -38,14 +38,29 @@ header:hover {
   margin: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.header-container nav a {
+.ham-menu a {
+  justify-self: end;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+
+.ham-menu nav {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 0.5vh;
+}
+
+.ham-menu nav a {
   margin-left: 20px;
   text-decoration: none;
   color: #fff;
   font-size: 1.5em;
+  gap: 0.5rem;
 }
 
 .header-container h1 {
