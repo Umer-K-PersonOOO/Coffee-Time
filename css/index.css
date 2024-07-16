@@ -85,13 +85,6 @@
   font-size: x-large;
 }
 
-.footer-bottom {
-  text-align: center;
-  padding: 10px 0;
-  background-color: #333;
-  color: #fff;
-}
-
 .iframe-container {
   display: flex;
   justify-content: center;
