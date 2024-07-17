@@ -94,7 +94,6 @@ const images = [
   const selectedImages = shuffle(images)
   // Create HTML for the selected images
   const photoGrid = document.getElementById('photo-grid');
-  console.log(photoGrid);
   selectedImages.forEach(image => {
     const img = new Image();
     img.src = image;

@@ -117,16 +117,12 @@
 
 .image-grid {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
   grid-template-columns: repeat(12, 1fr);
-  /* gap: min(10px, 0.1rem); */
   gap: 10px;
   justify-items: center;
   align-items: center;
   padding: 20px;
-  /* background-color: #B3B0A8; */
   border-radius: 30px;
-  /* width: 70%; */
   margin: auto;
 }
 
@@ -451,4 +447,3 @@
   width: min(40vw, 400px); /* Make this propertu screen responsive*/
   height: auto;
 }
-

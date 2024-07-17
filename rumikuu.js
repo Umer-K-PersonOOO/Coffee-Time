@@ -1,3 +1,12 @@
+const dispalys = [
+    document.getElementById('artwork-stuff'),
+    document.getElementById('genshin-keychains'),
+    document.getElementById('honkai-keychains'),
+    document.getElementById('holo-pins'),
+    document.getElementById('holo-decal'),
+    document.getElementById('rq-stand'),
+];
+
 function toggleVisibility() {
     var button = document.querySelector('.hider-button');
     var extraArtworkContainer = document.getElementById('extra-artwork-container');
@@ -13,25 +22,25 @@ function toggleVisibility() {
 }
 
 function itemsAll() {
-    showItems(['keychains', 'prints', 'misc-one', 'misc-two', 'misc-three']);
+    showItems(['keychains', 'prints', 'misc-one', 'misc-two', 'misc-three', 'artwork-stuff', 'genshin-keychains', 'honkai-keychains', 'holo-pins', 'holo-decal', 'rq-stand']);
     updateActiveButton('items-all-button');
 }
 
 function itemsKeychain() {
     hideAllItems();
-    showItems(['keychains']);
+    showItems(['keychains', 'genshin-keychains', 'honkai-keychains']);
     updateActiveButton('items-keychain-button');
 }
 
 function itemsPrints() {
     hideAllItems();
-    showItems(['prints']);
+    showItems(['prints', 'artwork-stuff']);
     updateActiveButton('items-prints-button');
 }
 
 function itemsMisc() {
     hideAllItems();
-    showItems(['misc-one', 'misc-two', 'misc-three']);
+    showItems(['misc-one', 'misc-two', 'misc-three', 'holo-decal', 'rq-stand']);
     updateActiveButton('items-misc-button');
 }
 
@@ -40,6 +49,12 @@ function hideAllItems() {
     items.forEach(function(item) {
         item.style.display = 'none';
     });
+    // TODO: Move outside of function? 
+    
+    dispalys.forEach(function(display) {
+        display.style.display = 'none';
+    });
+
 }
 
 function showItems(ids) {
@@ -61,3 +76,7 @@ function updateActiveButton(activeButtonId) {
         activeButton.classList.add('active');
     }
 }
+
+
+
+
