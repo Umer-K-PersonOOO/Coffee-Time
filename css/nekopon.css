@@ -1,0 +1,254 @@
+.new-socials {
+    margin-top: 15vh;
+    align-items: start;
+    gap: 20px;
+    padding-bottom: 0;
+}
+
+.new-socials svg {
+    height: 6vh;
+    width: auto;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+    justify-content: center; /* Center the buttons horizontally */
+    padding: 10px; /* Add some padding around the buttons */
+    margin: 3% 0;
+    flex-wrap: wrap;
+  }
+  
+  .filter-button {
+    background-color: rgba(46, 46, 46, 0.60); /* Default background color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the buttons */
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .filter-button:hover {
+    background-color: #6c6c6c; /* Darker background on hover */
+  }
+  
+  .filter-button.active {
+    background-color: #d78686; /* Background color for the active button */
+    color: black; /* Text color for the active button */
+  }
+  
+  .item-row {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    padding: 10px; 
+    margin: 0% 8%;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 20px; /* Adjust the gap between items as needed */
+
+  }
+  
+  .item {
+    background-color: rgba(219, 132, 132, 0.6);
+    color: black; /* Text color */
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the items */
+    font-size: 16px; /* Adjust font size as needed */
+    display: inline-flex; 
+    flex-direction: row;
+    align-items: center; 
+    gap: 25px; /* Gap between title and prices */
+    height: auto;
+    height: min-content;
+  }
+  
+  .item-title {
+    font-weight: bold; /* Bold text for item titles */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  .item-prices {
+    display: flex;
+    flex-direction: column; /* Stack prices vertically */
+    gap: 5px; /* Gap between prices */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  .spacer {
+    width: 160px; /* Adjust the width of the divider */
+    height: 1px; /* Thickness of the divider */
+    background-color: #000; /* Color of the divider */
+    margin: 4% auto; /* Center the divider and provide spacing */
+  }
+
+  .image-grid {
+    --gap: 24px;
+    --num-cols: 3;
+    --row-height: 519px;
+    margin: 0 6%;
+    box-sizing: border-box;
+    padding: var(--gap);
+    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: auto;
+    gap: var(--gap);
+}
+
+.caption {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.one-quarter:hover > img {
+    transform: translateY(-30px);
+  }
+  
+  .image-wrapper:hover .caption {
+    transform: translateY(0);
+  }
+
+.image-grid > .image-wrapper > img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-grid > .image-wrapper:hover > img {
+    transform: scale(1.05);
+}
+
+.image-wrapper:hover .caption {
+    opacity: 1;
+}
+
+
+.hider-button {
+    background-color: rgba(46, 46, 46, 0.60); /* Default background color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the buttons */
+    cursor: pointer;
+    font-size: 3rem; /* Adjust font size as needed */
+    display: block;
+    margin: 4% auto;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+
+}
+
+.hider-button:hover {
+    background-color: #6c6c6c; /* Darker background on hover */
+}
+
+
+.extra-artwork-container {
+  --gap: 24px;
+  --num-cols: 12;
+  --row-height: 519px;
+  margin: 0 6%;
+  box-sizing: border-box;
+  padding: var(--gap);
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  grid-auto-rows: auto;
+  gap: var(--gap);
+  align-items: center;
+}
+
+.hider-toggle {
+    display: none;
+}
+
+.simple-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+    margin: 4% 8%;
+    gap: 1rem;
+}
+
+.one-quarter {
+  grid-column: span 3;
+}
+  
+.simple-display > div > img {
+    width: auto;
+    height: 300px; 
+}
+
+.decal-display {
+    margin: 4% 8%;
+    justify-content: space-around;
+    display: flex;
+}
+.decal-display::after {
+    content: "";
+    clear: both;
+}
+/* .decal-container {
+    width: 25%;
+    float: left;
+    padding: 1vw;
+}
+.decal-container > img {
+    float: left;
+    width: 100%;
+    padding: 5px;
+    height: auto;
+} */
+
+
+  @media screen and (max-width: 1024px) {
+	.image-grid {
+		--num-cols: 2;
+        --gap: 4px;
+	}
+    .extra-artwork-container {
+        margin: 0 2%;
+        gap: 2vw;
+    }
+    .hider-button {
+        font-size: 2rem;
+    }
+    .simple-display > img {
+        height: 40vw;
+    }
+    .simple-display {
+        margin: 4% 2%;
+    }
+
+    /* .decal-display {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0;
+    }
+    .decal-display .decal-container {
+      width: 40%;
+    }
+    .decal-container img {
+      margin: 1vw;
+      width: calc(80% - (1vw * 2));
+    } */
+}
+
+@media (max-width: 600px) {
+    .image-row img {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .one-quarter {
+        grid-column: span 6;
+    }
+}

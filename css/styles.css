@@ -283,7 +283,7 @@ main {
   border-bottom-left-radius: 15px;
   font-size: 3rem;
   opacity: 0.6;
-  transition: opacity 0.3s;
+  transition: right 0.7s ease;
 }
 
 .open-sidebar:hover {
