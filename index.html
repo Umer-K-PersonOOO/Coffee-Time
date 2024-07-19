@@ -1,4 +1,4 @@
-<!-- TODO: When gain a url make sure to update teh sitemap.xml and robots.txt -->
+<!-- TODO: When gain a url make sure to update teh sitemap.xml and robots.txt and this https://search.google.com/search-console/about -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,48 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    </noscript>
+    <meta
+      name="description"
+      content="Screen Savor and Coffee is an anime/art cafe located in Japan Town, Cali Bay area, showcasing art from local Bay Area artists. Explore the cafe's menu, view artwork, and find links to artist pages. Artists featured: candypaintcafe, burntgreentea, mistiousstar, batsouppe, allenerie, batensan, rumikuu, nekopon, aitsuki, lixizu, pinlin, and kgynh."
     />
-    <meta name="description" content="Screen Savor and Coffee is an anime/art cafe located in Japan Town, Cali Bay area, showcasing art from local Bay Area artists. Explore the cafe's menu, view artwork, and find links to artist pages. Artists featured: candypaintcafe, burntgreentea, mistiousstar, batsouppe, allenerie, batensan, rumikuu, nekopon, aitsuki, lixizu, pinlin, and kgynh.">
     <title>Screen Savor Art and Coffee</title>
-  </head>
+</head>
+
   <body>
     <!-- Header -->
     <header>
       <div class="header-container">
         <a href="/"><h1>Screen Savor</h1></a>
         <div class="ham-menu">
-            <svg
-              width="35px"
-              height="35px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              href="javascript:void(0);"
-              class="hamburger"
-              onclick="myFunction()"
-            >
-              <path
-                d="M4 18L23 18"
-                stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M4 12L23 12"
-                stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M4 6L23 6"
-                stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
+          <svg
+            width="35px"
+            height="35px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            href="javascript:void(0);"
+            class="hamburger"
+            onclick="myFunction()"
+          >
+            <path
+              d="M4 18L23 18"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M4 12L23 12"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M4 6L23 6"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
           <nav id="tags">
             <a href="/#art">art</a>
             <a href="/#menu">menu</a>
@@ -263,4 +267,3 @@
     <script src="js/index.js"></script>
   </body>
 </html>
-
