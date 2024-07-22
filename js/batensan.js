@@ -6,8 +6,6 @@ var can = Canvallax({
   (function() {
     var origWidth = width = document.body.clientWidth,
         origHeight = height = document.body.scrollHeight;
-    console.log(height);
-    console.log(document.body.clientHeight);
   
     function createGradient(width, height) {
       var canvas = document.createElement('canvas'),
@@ -181,7 +179,7 @@ var can = Canvallax({
     landscape_artwork = [
       ['batensan4.jpg', 'Nier:Automata'],
       ['batensan5.jpg', 'Nier:Automata'],
-      ['batensan6.jpg', 'Moon Observatory, Ven'],
+      ['batensan6_rgb.jpg', 'Moon Observatory, Ven'],
       ['batensan7.jpg', 'Demon Slayer, Shinobu, Kanae'],
       ['batensan9.jpg', 'Genshin Impact, Venti'],
       ['batensan10.jpg', 'The Legend of Zelda: Breath of the Wild, Zelda, Link']
