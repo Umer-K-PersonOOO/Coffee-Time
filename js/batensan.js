@@ -12,35 +12,6 @@ var backCan = Canvallax({
   var origWidth = (width = document.body.clientWidth),
     origHeight = (height = document.body.scrollHeight);
 
-  function createGradient(width, height, start = "#2879a6", end = "#ecd5c1") {
-    canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d"),
-      gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0.2, start);
-    gradient.addColorStop(0.8, end);
-    return gradient;
-  }
-
-  var gradient = Canvallax.Rectangle({
-    width: width * 1.5,
-    height: height * 1.1,
-    zIndex: 1,
-    fill: createGradient(width, height),
-  });
-
-  var backgroundGradient = Canvallax.Rectangle({
-    width: width * 1.5,
-    height: height * 1.1,
-    zIndex: 3,
-    fill: createGradient(width, height),
-  });
-
-  var backgroundStartColor = "#2879a6",
-    backgroundEndColor = "#ecd5c1";
-
-  // can.add(gradient);
-  // backCan.add(backgroundGradient);
-
   function updateCanvasDimensions() {
     height = document.body.scrollHeight;
     width = document.body.clientWidth;
@@ -53,25 +24,6 @@ var backCan = Canvallax({
       element.y = element.origY * heightScale;
     });
 
-    gradient.width = width * 1.5;
-    gradient.height = height * 1.1;
-    gradient.fill = createGradient(width, height);
-
-    backgroundGradient.width = width * 1.5;
-    backgroundGradient.height = height * 1.1;
-    backgroundGradient.fill = createGradient(width, height);
-  }
-
-  function checkImagesLoaded(images, callback) {
-    let imagesLoaded = 0;
-    images.forEach((image) => {
-      image.addEventListener("load", () => {
-        imagesLoaded++;
-        if (imagesLoaded === images.length) {
-          callback();
-        }
-      });
-    });
   }
 
   function randomRange(min, max) {
@@ -103,15 +55,6 @@ var backCan = Canvallax({
   window.addEventListener("resize", function () {
     height = document.body.scrollHeight;
     width = document.body.clientWidth;
-
-    // Update the gradient properties
-    gradient.width = width * 1.5;
-    gradient.height = height * 1.1;
-    gradient.fill = createGradient(width, height);
-
-    backgroundGradient.width = width * 1.5;
-    backgroundGradient.height = height * 1.1;
-    backgroundGradient.fill = createGradient(width, height);
 
     var i = can.elements.length,
       max = document.body.clientWidth,
@@ -189,38 +132,6 @@ var backCan = Canvallax({
   }
 
   var getCandidate = bestCandidateSampler(width, height, 10);
-
-  // function changeGradientColor(color1, color2) {
-  // gradient.fill = createGradient(
-  //   width,
-  //   height,
-  //   backgroundStartColor,
-  //   backgroundEndColor
-  // );
-  // backgroundStartColor = color1;
-  // backgroundEndColor = color2;
-  // backgroundGradient.fill = createGradient(width, height, color1, color2);
-  // var cols = document.getElementsByClassName("opacity-toggle");
-  // cols[0].style.opacity = 0;
-  // }
-
-  // function returnGradientColor() {
-  // backgroundStartColor = "#2879a6";
-  // backgroundEndColor = "#ecd5c1";
-  // gradient.fill = createGradient(
-  //   width,
-  //   height,
-  //   backgroundStartColor,
-  //   backgroundEndColor
-  // );
-  // var cols = document.getElementsByClassName("opacity-toggle");
-  // cols[0].style.opacity = 1;
-  // }
-
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-  // Adding images to div
 
   portrait_artwork = [
     ["batensan2.jpg", "Genshin Impact, Venti, Lumine", "#446c8f", "#ded4b3"],
