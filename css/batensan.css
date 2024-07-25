@@ -1,4 +1,21 @@
 
+@property --start {
+  syntax: '<color>';
+  initial-value: #2879a6;
+  inherits: false;
+}
+
+@property --end {
+  syntax: '<color>';
+  initial-value: #ecd5c1;
+  inherits: false;
+}
+
+body {
+  background-image: linear-gradient(var(--start), var(--end));
+  transition: --start 1s, --end 1s;
+}
+
 .new-socials {
   margin-top: 15vh;
   align-items: start;
@@ -262,6 +279,13 @@ canvas {
   width: 100%;
   height: 100%;
   margin: 0;
+  transition: opacity 1s;
+
+}
+
+.opacity-toggle {
+  transition: opacity 1s;
+  opacity: 0;
 }
 
 @media (max-width: 600px) {
