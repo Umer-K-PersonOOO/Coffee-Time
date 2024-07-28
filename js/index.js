@@ -90,10 +90,15 @@ function shuffle(array) {
   }
   return selectedItems;
 }
-
+const modal = document.getElementById("modal");
+modal.onclick = function () {
+  modal.style.display = "none";
+};
 const selectedImages = shuffle(images);
 // Create HTML for the selected images
 const photoGrid = document.getElementById("photo-grid");
+const modalImg = document.getElementById("modal-image");
+
 selectedImages.forEach((item) => {
   const img = new Image();
   img.src = item.src;
@@ -103,7 +108,17 @@ selectedImages.forEach((item) => {
     const cardDiv = document.createElement("img");
     cardDiv.className = "card";
     cardDiv.src = item.src;
-    cardDiv.alt = item.alt; // Set the alt attribute
+    cardDiv.alt = item.alt;
+
+    cardDiv.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    };
+
+    modalImg.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    };
 
     if (img.width > img.height) {
       cardDiv.classList.add("card-wide");
