@@ -140,6 +140,8 @@ body {
 
 .image-wrapper:hover .caption {
   transform: translateY(0);
+  opacity: 1;
+
 }
 
 .image-grid > .image-wrapper > img {
@@ -151,10 +153,6 @@ body {
 
 .image-grid > .image-wrapper:hover > img {
   transform: scale(1.05);
-}
-
-.image-wrapper:hover .caption {
-  opacity: 1;
 }
 
 
