@@ -88,6 +88,7 @@
     --gap: 24px;
     --num-cols: 3;
     --row-height: 519px;
+    position: relative;
     margin: 0 6%;
     box-sizing: border-box;
     padding: var(--gap);
@@ -105,8 +106,30 @@
 
 .image-wrapper {
     position: relative;
+    z-index: 1;
+    width: 88%;
     overflow: hidden;
     border-radius: 10px;
+}
+
+.lixizu-splotch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body {
+    position: relative;
+}
+
+main,
+.artists-socials,
+.artwork-section,
+footer {
+    position: relative;
+    z-index: 1;
 }
 
 .one-quarter:hover > img {
@@ -141,7 +164,7 @@
     font-size: 3rem; /* Adjust font size as needed */
     display: block;
     margin: 4% auto;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    transition: background-color 0.5s; /* Smooth transition for hover effect */
 
 }
 

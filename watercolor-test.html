@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Paint Splotch Creator</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #101014;
+            --panel: #181820;
+            --panel-2: #20202b;
+            --text: #f2f2f5;
+            --muted: #aaaab8;
+            --line: #333344;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(255, 111, 92, 0.14), transparent 34rem),
+                radial-gradient(circle at bottom right, rgba(118, 177, 255, 0.12), transparent 30rem),
+                var(--bg);
+            color: var(--text);
+        }
+
+        header {
+            padding: 22px 24px 12px;
+            max-width: 1420px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: clamp(24px, 3vw, 38px);
+            letter-spacing: -0.04em;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            max-width: 980px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .controls {
+            max-width: 1420px;
+            margin: 12px auto 18px;
+            padding: 14px 24px 18px;
+            display: grid;
+            grid-template-columns: repeat(12, minmax(110px, 1fr));
+            gap: 12px;
+            align-items: end;
+        }
+
+        .control {
+            background: rgba(24, 24, 32, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 10px;
+            min-height: 76px;
+        }
+
+        label {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            font: inherit;
+            color: var(--text);
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 8px 10px;
+        }
+
+        input[type="color"] {
+            height: 39px;
+            padding: 4px;
+        }
+
+        input[type="range"] {
+            padding: 0;
+            accent-color: #ff786c;
+        }
+
+        button {
+            cursor: pointer;
+            background: linear-gradient(180deg, #39394b, #282836);
+            border-color: #4a4a61;
+            min-height: 41px;
+        }
+
+        button:hover {
+            filter: brightness(1.1);
+        }
+
+        .value {
+            float: right;
+            color: var(--text);
+            font-variant-numeric: tabular-nums;
+        }
+
+        main {
+            max-width: 1420px;
+            margin: 0 auto;
+            padding: 0 24px 32px;
+        }
+
+        .stage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .stage {
+            background: rgba(24, 24, 32, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+        }
+
+        .stage h2 {
+            margin: 0;
+            padding: 14px 15px 3px;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .stage p {
+            margin: 0;
+            padding: 0 15px 12px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.35;
+            min-height: 48px;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f7f2e9;
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
+        .notes {
+            margin-top: 16px;
+            color: var(--muted);
+            background: rgba(24, 24, 32, 0.62);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px 16px;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        code {
+            color: #ffd3cc;
+        }
+
+        @media (max-width: 1200px) {
+            .controls {
+                grid-template-columns: repeat(4, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .stage-grid {
+                grid-template-columns: repeat(2, minmax(260px, 1fr));
+            }
+
+            .wide {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .controls {
+                grid-template-columns: repeat(2, minmax(120px, 1fr));
+            }
+
+            .stage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wide {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Canvas Paint Splotch Creator</h1>
+        <p class="subtitle">
+            A canvas implementation of recursive watercolor-like polygon deformation. The panels show the process: base
+            polygon, one deformation pass, recursive roughening, and a final stacked low-opacity splotch that uses the
+            layered center-concentration trick from the transcript.
+        </p>
+    </header>
+
+    <section class="controls" aria-label="paint splotch controls">
+        <div class="control">
+            <label for="seed">Seed</label>
+            <input id="seed" value="182735" />
+        </div>
+
+        <div class="control">
+            <label for="sides">Base sides <span class="value" id="sidesValue">7</span></label>
+            <input id="sides" type="range" min="3" max="12" step="1" value="7" />
+        </div>
+
+        <div class="control">
+            <label for="midSigma">Midpoint Gaussian σ <span class="value" id="midSigmaValue">0.41</span></label>
+            <input id="midSigma" type="range" min="0.20" max="0.50" step="0.01" value="0.41" />
+        </div>
+
+        <div class="control">
+            <label for="angleSigma">Angle variance <span class="value" id="angleSigmaValue">0.48</span></label>
+            <input id="angleSigma" type="range" min="0" max="1.20" step="0.02" value="0.48" />
+        </div>
+
+        <div class="control">
+            <label for="magnitude">Length magnitude <span class="value" id="magnitudeValue">0.74</span></label>
+            <input id="magnitude" type="range" min="0.2" max="0.80" step="0.01" value="0.74" />
+        </div>
+
+        <div class="control">
+            <label for="roundDecay">Round decay <span class="value" id="roundDecayValue">0.73</span></label>
+            <input id="roundDecay" type="range" min="0.25" max="0.80" step="0.01" value="0.73" />
+        </div>
+
+        <div class="control">
+            <label for="inheritDelta">Inherited edge delta <span class="value"
+                    id="inheritDeltaValue">0.09</span></label>
+            <input id="inheritDelta" type="range" min="0" max="0.20" step="0.01" value="0.09" />
+        </div>
+
+        <div class="control">
+            <label for="edgeVarSpread">Edge variance spread <span class="value"
+                    id="edgeVarSpreadValue">0.57</span></label>
+            <input id="edgeVarSpread" type="range" min="0.10" max="1.00" step="0.01" value="0.57" />
+        </div>
+
+        <div class="control">
+            <label for="edgeLengthInfluence">Edge length influence <span class="value"
+                    id="edgeLengthInfluenceValue">0.22</span></label>
+            <input id="edgeLengthInfluence" type="range" min="0" max="1.00" step="0.01" value="0.22" />
+        </div>
+
+        <div class="control">
+            <label for="baseAlpha">Layer alpha base <span class="value" id="baseAlphaValue">0.0026</span></label>
+            <input id="baseAlpha" type="range" min="0.0004" max="0.0040" step="0.0001" value="0.0026" />
+        </div>
+
+        <div class="control">
+            <label for="layersPerBand">Layers / band <span class="value" id="layersPerBandValue">25</span></label>
+            <input id="layersPerBand" type="range" min="10" max="100" step="5" value="25" />
+        </div>
+
+        <div class="control">
+            <label for="color">Paint color</label>
+            <input id="color" type="color" value="#b44a47" />
+        </div>
+
+        <div class="control">
+            <label>&nbsp;</label>
+            <button id="randomize">Random seed</button>
+        </div>
+
+        <div class="control">
+            <label>&nbsp;</label>
+            <button id="render">Render</button>
+        </div>
+
+        <div class="control">
+            <label>&nbsp;</label>
+            <button id="download">Download final PNG</button>
+        </div>
+    </section>
+
+    <main>
+        <section class="stage-grid">
+            <article class="stage">
+                <h2>1. Start polygon</h2>
+                <p>Simple base polygon. Each original edge gets its own magnitude-variance multiplier.</p>
+                <canvas id="stage0"></canvas>
+            </article>
+
+            <article class="stage">
+                <h2>2. One deformation pass</h2>
+                <p>For each edge: sample a Gaussian point on the edge, noisy outward angle, and positive length.</p>
+                <canvas id="stage1"></canvas>
+            </article>
+
+            <article class="stage">
+                <h2>3. Three recursive loops</h2>
+                <p>The large form becomes organic while later recursive magnitudes are slightly nerfed.</p>
+                <canvas id="stage3"></canvas>
+            </article>
+
+            <article class="stage">
+                <h2>4. Five recursive loops</h2>
+                <p>More shoreline-like detail. Child edges inherit local softness or sharpness.</p>
+                <canvas id="stage45"></canvas>
+            </article>
+
+            <article class="stage">
+                <h2>5. Six recursive loops</h2>
+                <p>Fine detail appears, but later rounds are kept smaller so the shape does not balloon too much.</p>
+                <canvas id="stage6"></canvas>
+            </article>
+
+            <article class="stage wide">
+                <h2>6. Final stacked low-opacity splotch</h2>
+                <p>Three bands of layers: base deformed 1 round + 3 detail rounds, then 2 + 3, then 3 + 3. This keeps
+                    only a touch more pigment near the center.</p>
+                <canvas id="final"></canvas>
+            </article>
+
+            <article class="stage wide">
+                <h2>7. Multi-color interaction test</h2>
+                <p>Several independently seeded splotches drawn into the same paper surface. Overlaps use multiply
+                    blending so transparent pigment layers visibly interact.</p>
+                <canvas id="interaction"></canvas>
+            </article>
+        </section>
+
+        <aside class="notes">
+            <strong>What changed:</strong>
+            the center is less opaque, later recursive rounds are slightly smaller, and the final render now follows the
+            transcript’s layering strategy: first third from a <code>1-round</code> base, second third from a
+            <code>2-round</code> base, final third from a <code>3-round</code> base, with <code>3</code> extra
+            deformation rounds applied per layer in every band. The “midpoint” remains on the edge, and only the jut
+            vector moves outward.
+        </aside>
+    </main>
+
+    <script src="js/watercolor-test.js" defer></script>
+</body>
+
+</html>

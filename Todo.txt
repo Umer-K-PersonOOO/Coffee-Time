@@ -1,0 +1,3 @@
+Fix side bar scroll
+Lixi screen size changes needs to decrease canvas size/ reload size.
+something on phones causes a redraw when scrolling
