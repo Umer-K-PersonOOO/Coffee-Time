@@ -1,12 +1,12 @@
 .new-socials {
-    margin-top: 15vh;
+    margin-top: calc(var(--app-vh) * 15);
     align-items: start;
     gap: 20px;
     padding-bottom: 0;
 }
 
 .new-socials svg {
-    height: 6vh;
+    height: calc(var(--app-vh) * 6);
     width: auto;
 }
 
@@ -120,11 +120,6 @@
     pointer-events: none;
 }
 
-body {
-    position: relative;
-}
-
-main,
 .artists-socials,
 .artwork-section,
 footer {

@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   margin: 20px auto;
-  height: 50vh;
+  height: calc(var(--app-vh) * 50);
   width: 60%;
 }
 
@@ -112,7 +112,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 5vh;
+  margin-bottom: calc(var(--app-vh) * 5);
 }
 
 .image-grid {
@@ -158,7 +158,7 @@
   /* align-items: center; */
   margin: 40px 0;
   text-align: center;
-  padding-bottom: 5vh;
+  padding-bottom: calc(var(--app-vh) * 5);
 }
 
 .socials-container {
@@ -267,52 +267,52 @@
 @keyframes move-green-bubble {
   0% {
     left: 20vw;
-    bottom: 5vh;
+    bottom: calc(var(--app-vh) * 5);
   }
   25% {
     left: 12vw;
-    bottom: 4vh;
+    bottom: calc(var(--app-vh) * 4);
     scale: 0.85;
   }
   50% {
     left: 8vw;
-    bottom: -2vh;
+    bottom: calc(var(--app-vh) * -2);
     scale: 0.95;
   }
   75% {
     left: 16vw;
-    bottom: 0vh;
+    bottom: calc(var(--app-vh) * 0);
     scale: 1.1;
   }
   100% {
     left: 20vw;
-    bottom: 5vh;
+    bottom: calc(var(--app-vh) * 5);
   }
 }
 
 @keyframes move-pink-bubble {
   0% {
     left: -15vw;
-    bottom: -10vh;
+    bottom: calc(var(--app-vh) * -10);
   }
   25% {
     left: -25vw;
-    bottom: -6vh;
+    bottom: calc(var(--app-vh) * -6);
     scale: 1.1;
   }
   50% {
     left: -30vw;
-    bottom: 4vh;
+    bottom: calc(var(--app-vh) * 4);
     scale: 1.05;
   }
   75% {
     left: -30vw;
-    bottom: 8vh;
+    bottom: calc(var(--app-vh) * 8);
     scale: 1.3;
   }
   100% {
     left: -15vw;
-    bottom: -10vh;
+    bottom: calc(var(--app-vh) * -10);
   }
 }
 
@@ -389,7 +389,7 @@
   flex-direction: column; /* Stack elements vertically */
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Take full viewport height */
+  height: calc(var(--app-vh) * 100); /* Take full viewport height */
   box-sizing: border-box; /* Include padding in height calculation */
 }
 
@@ -409,7 +409,7 @@
 
 @media screen and (max-width: 500px) {
   .menu-container-2 {
-    height: 130vh; /* Take full viewport height */
+    height: calc(var(--app-vh) * 130); /* Take full viewport height */
   }
   .menu-container-2 iframe {
     height: calc(130% + 70px);
@@ -448,7 +448,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 5vh 0;
+  padding: calc(var(--app-vh) * 5) 0;
 }
 
 .waitress-container img {

@@ -12,6 +12,16 @@
   src: local('Roboto Bold'), local('Roboto-Bold'), url('./fonts/roboto-v20-latin-700.woff2') format('woff2'), url('./fonts/roboto-v20-latin-700.woff') format('woff');
 }
 
+:root {
+  --app-vh: 1vh;
+}
+
+@supports (height: 1svh) {
+  :root {
+    --app-vh: 1svh;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -24,8 +34,14 @@ body {
   color: #333;
   /* display: flex; */
   /* flex-direction: column; */
-  /* min-height: 100vh; */
+  /* min-height: calc(var(--app-vh) * 100); */
   width: 100%;
+}
+
+.canvallax--fullscreen,
+.bg-canvas {
+  width: 100vw;
+  height: calc(var(--app-vh) * 100);
 }
 
 header {
@@ -66,7 +82,7 @@ header:hover {
   display: none;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 0.5vh;
+  margin-top: calc(var(--app-vh) * 0.5);
 }
 
 .ham-menu nav a {
@@ -94,7 +110,7 @@ main {
 
 .image-container {
   width: 100%;
-  height: 80vh;
+  height: calc(var(--app-vh) * 80);
   display: flex;
   overflow: hidden;
   position: relative;
@@ -145,7 +161,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 40px; /* Optional: gap between images */
-  padding: 5vh;
+  padding: calc(var(--app-vh) * 5);
 }
 
 .artists-socials svg {
@@ -164,8 +180,8 @@ main {
 
 .artists-socials-pfp-middle {
   position: absolute;
-  height: 30vh; 
-  bottom: 5vh; /* Half of height */
+  height: calc(var(--app-vh) * 30); 
+  top: calc(var(--app-vh) * 65);
   left: 50%;
   transform: translateX(-50%);
   width: auto;
@@ -173,7 +189,7 @@ main {
 }
 
 .socials-middle {
-  margin-top: 15vh;
+  margin-top: calc(var(--app-vh) * 15);
   align-items: start;
   gap: 20px;
   padding-bottom: 0;
@@ -274,9 +290,10 @@ main {
   position: fixed;
   right: -66vw; /* Initially hidden */
   width: 66vw;
-  top: 50%; /* Adjusted to start from a specific position */
+  top: calc(var(--app-vh) * 50); /* Adjusted to start from a specific position */
+  transform: translateY(-50%);
   height: auto; /* Height adjusts based on content */
-  max-height: 80%; /* Ensure it doesn't exceed the viewport height */
+  max-height: calc(var(--app-vh) * 80); /* Ensure it doesn't exceed the viewport height */
   background-color: rgba(51,51,51,0.9);
   transition: right 0.7s ease;
   z-index: 1000;
@@ -284,9 +301,10 @@ main {
 }
 
 .open-sidebar {
-  transition: right 0.7s ease, top 0.7s ease;
   position: fixed;
   right: 0px;
+  top: calc(var(--app-vh) * 50);
+  transform: translateY(-50%);
   z-index: 1001;
   background-color: #333;
   color: white;
