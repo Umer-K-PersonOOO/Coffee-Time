@@ -1,8 +1,8 @@
 const portrait_artwork = [
   ["lixizu1.jpg", "Genshin Impact, Yae Miko", "#e8325c"],
   ["lixizu2.jpg", "Genshin Impact, Ganyu", "#69a8f2"],
-  ["lixizu3.jpg", "Genshin Impact, Chongyun", "#82d4e8"],
-  ["lixizu4.jpg", "Genshin Impact, Keqing", "#b88bf0"],
+  ["lixizu3.jpg", "Genshin Impact, Chongyun", "#4fc6e3"],
+  ["lixizu4.jpg", "Genshin Impact, Keqing", "#9040f3"],
   ["lixizu5.jpg", "Genshin Impact, Xiao", "#76c9a2"],
   ["lixizu6.jpg", "Genshin Impact, Hu Tao", "#c61e38"],
 ];
@@ -292,17 +292,23 @@ function createSplotchCanvas() {
 
 const splotchCanvas = createSplotchCanvas();
 
+function getStableViewportHeight() {
+  const appVh = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--app-vh")
+  );
+  return Math.round((appVh || window.innerHeight * 0.01) * 100);
+}
+
 function fitSplotchCanvas() {
   const dpr = Math.max(1, window.devicePixelRatio || 1);
   const widthCss = Math.max(
-    document.documentElement.scrollWidth,
-    document.body.scrollWidth,
-    window.innerWidth
+    document.documentElement.clientWidth,
+    document.body.clientWidth
   );
   const heightCss = Math.max(
     document.documentElement.scrollHeight,
     document.body.scrollHeight,
-    window.innerHeight
+    getStableViewportHeight()
   );
   const width = Math.max(1, Math.round(widthCss * dpr));
   const height = Math.max(1, Math.round(heightCss * dpr));
@@ -456,6 +462,8 @@ function renderArtworkSplotches() {
 }
 
 let splotchAnimationFrame = 0;
+let lastResizeWidth = document.documentElement.clientWidth;
+let lastResizeDpr = Math.max(1, window.devicePixelRatio || 1);
 
 function animateArtworkSplotches(timestamp) {
   let shouldContinue = false;
@@ -553,6 +561,19 @@ Promise.all(artworkImages.map(waitForImage)).then(() => {
 });
 
 window.addEventListener("resize", () => {
+  const nextWidth = document.documentElement.clientWidth;
+  const nextDpr = Math.max(1, window.devicePixelRatio || 1);
+  const isMobileHeightOnlyResize =
+    window.visualViewport &&
+    nextWidth <= 900 &&
+    Math.abs(nextWidth - lastResizeWidth) <= 2 &&
+    Math.abs(nextDpr - lastResizeDpr) <= 0.01;
+
+  if (isMobileHeightOnlyResize) return;
+
+  lastResizeWidth = nextWidth;
+  lastResizeDpr = nextDpr;
+
   clearTimeout(window.__lixizuSplotchResizeTimer);
   window.__lixizuSplotchResizeTimer = setTimeout(handleSplotchResize, 140);
 });

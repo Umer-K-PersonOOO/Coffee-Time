@@ -1,3 +1,36 @@
+const viewportUnit = (() => {
+  const root = document.documentElement;
+  let lastWidth = 0;
+
+  function viewportWidth() {
+    return Math.round(root.clientWidth || window.innerWidth || window.visualViewport?.width);
+  }
+
+  function viewportHeight() {
+    return window.visualViewport?.height || window.innerHeight || root.clientHeight;
+  }
+
+  function setViewportUnit({ force = false } = {}) {
+    const nextWidth = viewportWidth();
+    const widthChanged = Math.abs(nextWidth - lastWidth) > 2;
+    const mobileHeightOnlyResize = window.visualViewport && nextWidth <= 900;
+
+    if (!force && !widthChanged && mobileHeightOnlyResize) return;
+
+    lastWidth = nextWidth;
+    root.style.setProperty("--app-vh", `${viewportHeight() * 0.01}px`);
+  }
+
+  setViewportUnit({ force: true });
+  window.addEventListener("resize", () => setViewportUnit(), { passive: true });
+  window.visualViewport?.addEventListener("resize", () => setViewportUnit(), { passive: true });
+  window.addEventListener("orientationchange", () => {
+    setTimeout(() => setViewportUnit({ force: true }), 250);
+  });
+
+  return { refresh: () => setViewportUnit({ force: true }) };
+})();
+
 document.addEventListener("scroll", function () {
     const header = document.querySelector("header");
     if (window.scrollY > 50) {
@@ -21,43 +54,30 @@ function myFunction() {
   }
   
 const sidebar = document.getElementById("artist-sidebar");
-if(sidebar != null) {
-  window.addEventListener('scroll', closeSidebar);
+const openSidebarButton = document.getElementById("open-sidebar");
+if (sidebar && openSidebarButton) {
+  window.addEventListener("scroll", closeSidebar);
+  window.addEventListener("load", centerButton);
 }
 
   function toggleSidebar() {
-    // var sidebar = document.getElementById('artist-sidebar');
-    var openButton = document.getElementById('open-sidebar');
+    if (!sidebar || !openSidebarButton) return;
     if (sidebar.style.right === '0px') {
         sidebar.style.right = '-66vw'; 
-        openButton.style.right = '0px'; 
+        openSidebarButton.style.right = '0px'; 
     } else {
         sidebar.style.right = '0px';
-        openButton.style.right = '66vw'; 
+        openSidebarButton.style.right = '66vw'; 
     }
-    setTimeout(centerButton, 300); // Adjust button position after transition
 }
 
 function closeSidebar() {
-  var sidebar = document.getElementById('artist-sidebar');
-  var openButton = document.getElementById('open-sidebar');
+  if (!sidebar || !openSidebarButton) return;
   sidebar.style.right = '-66vw'; 
-  openButton.style.right = '0px'; 
-  setTimeout(centerButton, 300); // Adjust button position after transition
+  openSidebarButton.style.right = '0px'; 
 }
 
 function centerButton() {
-    // var sidebar = document.getElementById('artist-sidebar');
-    var openButton = document.getElementById('open-sidebar');
-    var sidebarTop = sidebar.offsetTop;
-    var sidebarHeight = sidebar.offsetHeight;
-    var buttonHeight = openButton.offsetHeight;
-    var buttonTop = sidebarTop + (sidebarHeight - buttonHeight) / 2;
-    openButton.style.top = buttonTop + 'px';
+  if (!openSidebarButton) return;
+  openSidebarButton.style.removeProperty("top");
 }
-
-
-
-// Center the button on initial load
-window.onload = centerButton;
-window.onresize = centerButton;

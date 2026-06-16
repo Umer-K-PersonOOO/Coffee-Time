@@ -1,16 +1,57 @@
+function stableBackgroundCanvasWidth() {
+  return document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+}
+
+function stableBackgroundCanvasHeight() {
+  var appVh = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--app-vh")
+  );
+  return Math.round((appVh || window.innerHeight * 0.01) * 100);
+}
+
 var can = Canvallax({
   className: "bg-canvas opacity-toggle",
   damping: 40,
+  fullscreen: false,
+  width: stableBackgroundCanvasWidth(),
+  height: stableBackgroundCanvasHeight(),
 });
 
 var backCan = Canvallax({
   className: "bg-canvas ",
   damping: 40,
+  fullscreen: false,
+  width: stableBackgroundCanvasWidth(),
+  height: stableBackgroundCanvasHeight(),
 });
 
 (function () {
   var origWidth = (width = document.body.clientWidth),
     origHeight = (height = document.body.scrollHeight);
+  var lastLayoutWidth = document.documentElement.clientWidth;
+
+  function fitBackgroundCanvases() {
+    var canvasWidth = stableBackgroundCanvasWidth();
+    var canvasHeight = stableBackgroundCanvasHeight();
+
+    if (
+      can.canvas.width === canvasWidth &&
+      can.canvas.height === canvasHeight &&
+      backCan.canvas.width === canvasWidth &&
+      backCan.canvas.height === canvasHeight
+    ) {
+      return;
+    }
+
+    can.resize(canvasWidth, canvasHeight);
+    backCan.resize(canvasWidth, canvasHeight);
+  }
+
+  function scheduleBackgroundCanvasFit() {
+    fitBackgroundCanvases();
+    requestAnimationFrame(fitBackgroundCanvases);
+    setTimeout(fitBackgroundCanvases, 80);
+  }
 
   function updateCanvasDimensions() {
     height = document.body.scrollHeight;
@@ -51,8 +92,15 @@ var backCan = Canvallax({
 
   can.add(stars);
   backCan.add(stars);
+  scheduleBackgroundCanvasFit();
 
   window.addEventListener("resize", function () {
+    scheduleBackgroundCanvasFit();
+
+    var nextLayoutWidth = document.documentElement.clientWidth;
+    if (Math.abs(nextLayoutWidth - lastLayoutWidth) <= 2) return;
+
+    lastLayoutWidth = nextLayoutWidth;
     height = document.body.scrollHeight;
     width = document.body.clientWidth;
 
