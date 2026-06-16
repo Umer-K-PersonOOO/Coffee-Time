@@ -69,9 +69,23 @@
       </div>
     </main>
 
-    <div class="artists-socials">
-      <a href="https://www.instagram.com/mistiousstar">
-        <svg
+    <section class="mistiousstar-scene" id="art">
+      <svg
+        class="mistiousstar-doodles"
+        id="mistiousstar-doodles"
+        viewBox="0 0 160 90"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      ></svg>
+
+      <div class="mistiousstar-bottom-columns" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="artists-socials" id="socials">
+        <a href="https://www.instagram.com/mistiousstar">
+          <svg
           id="instagram"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -121,15 +135,15 @@
             <stop offset=".99" stop-color="#9C27B0"></stop>
           </linearGradient>
           <circle cx="12.3" cy="3.7" r=".533" fill="url(#c)"></circle>
-        </svg>
-      </a>
-      <img
-        src="images/mistiousstarpfp.jpg"
-        alt="candypaintcafe"
-        class="artists-socials-pfp"
-      />
-      <a href="https://www.twitter.com/mistiousstar">
-        <svg
+          </svg>
+        </a>
+        <img
+          src="images/mistiousstarpfp.jpg"
+          alt="candypaintcafe"
+          class="artists-socials-pfp"
+        />
+        <a href="https://www.twitter.com/mistiousstar">
+          <svg
           id="twitter"
           width="1200"
           height="1227"
@@ -141,10 +155,10 @@
             d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
             fill="black"
           />
-        </svg>
-      </a>
-    </div>
-    <div class="artist-sidebar" id="artist-sidebar">
+          </svg>
+        </a>
+      </div>
+      <div class="artist-sidebar" id="artist-sidebar">
       <div class="pfp-grid">
         <a href="/candypaintcafe.html">
           <img src="images/candypaintcafepfp.jpg" alt="candypaintcafe" />
@@ -183,10 +197,23 @@
           <img src="images/kgynhpfp.jpg" alt="kgynh" />
         </a>
       </div>
-    </div>
-    <button class="open-sidebar" id="open-sidebar" onclick="toggleSidebar()">
-      &#171;
-    </button>
+      </div>
+      <button class="open-sidebar" id="open-sidebar" onclick="toggleSidebar()">
+        &#171;
+      </button>
+
+      <div class="mistiousstar-content">
+        <div class="mistiousstar-portrait-grid" id="mistiousstar-portrait-grid"></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-bottom">
+        <p>&copy; screen savor 2024</p>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
+    <script src="js/mistiousstar.js"></script>
   </body>
 </html>

@@ -1,0 +1,237 @@
+.candypaint-polaroid-board {
+    position: relative;
+    width: min(1340px, calc(100% - 20px));
+    margin: calc(var(--app-vh) * 8) auto;
+    padding: 58px 26px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 76px 62px;
+    align-items: start;
+    isolation: isolate;
+} 
+
+.candypaint-polaroid-board::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 26px;
+    background:
+        radial-gradient(circle, rgba(70, 45, 25, 0.18) 0 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px),
+        rgba(118, 84, 49, 0.2);
+    background-size: 9px 9px, 13px 13px, auto;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+        0 28px 60px rgba(0, 0, 0, 0.22);
+    z-index: 0;
+}
+
+.candypaint-string-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.candypaint-red-string {
+    fill: none;
+    stroke: #65070a;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.45));
+}
+
+.candypaint-red-string-highlight {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.16);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.candypaint-polaroid-card {
+    --card-width: 330px;
+    --photo-ratio: 1 / 1;
+    --hole-y: 20px;
+
+    position: relative;
+    width: min(var(--card-width), 100%);
+    justify-self: center;
+    z-index: 2;
+    transform: rotate(var(--card-tilt, 0deg));
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.candypaint-polaroid-card:hover {
+    filter: brightness(1.03);
+    transform: rotate(var(--card-tilt, 0deg)) translateY(-4px);
+}
+
+.candypaint-polaroid-card.small {
+    --card-width: 295px;
+}
+
+.candypaint-polaroid-card.wide {
+    --card-width: 390px;
+    --photo-ratio: 4 / 3;
+}
+
+.candypaint-polaroid-card.tall {
+    --card-width: 315px;
+    --photo-ratio: 3 / 4;
+}
+
+.candypaint-polaroid-card.large {
+    --card-width: 410px;
+}
+
+.candypaint-polaroid-paper {
+    position: relative;
+    padding: 28px 16px 76px;
+    background: linear-gradient(145deg, #fffdf6, #eee4d4);
+    box-shadow:
+        0 24px 44px rgba(0, 0, 0, 0.28),
+        0 5px 10px rgba(0, 0, 0, 0.16),
+        inset 0 0 0 1px rgba(75, 48, 22, 0.12);
+    overflow: hidden;
+    -webkit-mask:
+        radial-gradient(circle 8px at 50% var(--hole-y), transparent 0 7.5px, #000 8px) 0 0 / 100% 100% no-repeat;
+    mask:
+        radial-gradient(circle 8px at 50% var(--hole-y), transparent 0 7.5px, #000 8px) 0 0 / 100% 100% no-repeat;
+}
+
+.candypaint-polaroid-paper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    background-image:
+        radial-gradient(circle, rgba(80, 55, 30, 0.2) 0 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px);
+    background-size: 7px 7px, 11px 11px;
+    background-position: 0 0, 4px 6px;
+    mix-blend-mode: multiply;
+}
+
+.candypaint-polaroid-paper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 8%, rgba(255, 255, 255, 0.65), transparent 24%),
+        radial-gradient(circle at 88% 95%, rgba(115, 72, 30, 0.16), transparent 30%),
+        linear-gradient(to bottom, transparent 70%, rgba(132, 94, 52, 0.1));
+    opacity: 0.7;
+}
+
+.candypaint-string-hole {
+    position: absolute;
+    left: 50%;
+    top: var(--hole-y);
+    width: 28px;
+    height: 28px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
+    background:
+        radial-gradient(circle,
+            transparent 0 7px,
+            rgba(45, 27, 12, 0.75) 7.5px 9px,
+            rgba(238, 223, 194, 0.95) 9.5px 12px,
+            rgba(84, 54, 24, 0.34) 12.5px 13.5px,
+            transparent 14px);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.candypaint-photo-area {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: #d8d2c3;
+    box-shadow:
+        inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+        inset 0 0 18px rgba(0, 0, 0, 0.16);
+}
+
+.candypaint-photo-area img {
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--photo-ratio);
+    object-fit: cover;
+    filter: sepia(0.13) contrast(0.95) saturate(0.92);
+}
+
+.candypaint-photo-area::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at center, transparent 54%, rgba(0, 0, 0, 0.18) 100%),
+        linear-gradient(120deg, rgba(255, 255, 255, 0.24), transparent 35%);
+    mix-blend-mode: soft-light;
+}
+
+.candypaint-polaroid-caption {
+    position: absolute;
+    z-index: 2;
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 12px;
+}
+
+.candypaint-caption-main {
+    margin: 0;
+    font-family: "Indie Flower", "Comic Sans MS", cursive;
+    font-size: 1.08rem;
+    color: #3e342c;
+    line-height: 1.1;
+}
+
+.candypaint-caption-date {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+    color: rgba(62, 52, 44, 0.64);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 900px) {
+    .candypaint-polaroid-board {
+        width: min(680px, calc(100% - 28px));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 58px 28px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .candypaint-polaroid-board {
+        width: min(520px, calc(100% - 22px));
+        padding: 42px 14px;
+        gap: 48px 22px;
+        grid-template-columns: 1fr;
+    }
+
+    .candypaint-polaroid-card,
+    .candypaint-polaroid-card.small,
+    .candypaint-polaroid-card.wide,
+    .candypaint-polaroid-card.tall,
+    .candypaint-polaroid-card.large {
+        --card-width: min(330px, 88vw);
+    }
+}
