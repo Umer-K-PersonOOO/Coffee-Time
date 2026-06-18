@@ -1,3 +1,64 @@
+.rumikuu-bubble-page {
+  --rumikuu-bubble-rgb: 219, 181, 132;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.rumikuu-bubble-page > main,
+.rumikuu-bubble-page > .artists-socials,
+.rumikuu-bubble-page > .button-row,
+.rumikuu-bubble-page > .item-row,
+.rumikuu-bubble-page > .spacer,
+.rumikuu-bubble-page > #artwork-stuff,
+.rumikuu-bubble-page > .keychains {
+  position: relative;
+  z-index: 1;
+}
+
+.rumikuu-bubble-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: var(--rumikuu-bubble-height, 100%);
+  min-height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rumikuu-background-ball {
+  position: absolute;
+  left: var(--bubble-x);
+  top: var(--bubble-y);
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  border-radius: 50%;
+  background-color: rgba(var(--rumikuu-bubble-rgb), var(--bubble-opacity));
+  filter: blur(var(--bubble-blur));
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(var(--bubble-scale, 1));
+  transition: background-color 0.55s ease, opacity 0.55s ease;
+  animation: rumikuu-bubble-float var(--bubble-duration) ease-in-out infinite alternate;
+  animation-delay: var(--bubble-delay);
+  will-change: transform;
+}
+
+@keyframes rumikuu-bubble-float {
+  from {
+    transform: translate(-50%, -50%) scale(var(--bubble-scale, 1));
+  }
+
+  to {
+    transform:
+      translate(
+        calc(-50% + var(--bubble-drift-x)),
+        calc(-50% + var(--bubble-drift-y))
+      )
+      scale(calc(var(--bubble-scale, 1) * 1.08));
+  }
+}
+
 .new-socials {
     margin-top: calc(var(--app-vh) * 15);
     align-items: start;
