@@ -211,9 +211,10 @@ function renderMistiousGrid() {
     card.addEventListener("pointerleave", () => setMistiousGradient(defaultMistiousGradient));
 
     const img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
     img.src = src;
     img.alt = captionText;
-    img.loading = "lazy";
 
     const caption = document.createElement("figcaption");
     caption.className = "caption";

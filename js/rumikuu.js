@@ -10,7 +10,7 @@ const dispalys = [
 function toggleVisibility() {
     var button = document.querySelector('.hider-button');
     var extraArtworkContainer = document.getElementById('extra-artwork-container');
-    
+
     // Toggle visibility of button
     button.style.opacity = '0';
     button.style.display = 'none';
@@ -51,8 +51,8 @@ function hideAllItems() {
     items.forEach(function(item) {
         item.style.display = 'none';
     });
-    // TODO: Move outside of function? 
-    
+    // TODO: Move outside of function?
+
     dispalys.forEach(function(display) {
         display.style.display = 'none';
     });

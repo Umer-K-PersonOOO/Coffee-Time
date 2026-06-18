@@ -80,14 +80,16 @@ const images = [
   { src: "thumbnail/rumikuukc2.avif", alt: "rumikuukc2" },
 ];
 
-// Pick 9 random images from the list (side effect: mutates the input array)
-function shuffle(array) {
-  let selectedItems = [];
-  while (selectedItems.length < 9 && array.length > 0) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    selectedItems.push(array[randomIndex]);
-    array.splice(randomIndex, 1);
+function pickRandomImages(items, count) {
+  const pool = [...items];
+  const selectedItems = [];
+
+  while (selectedItems.length < count && pool.length > 0) {
+    const randomIndex = Math.floor(Math.random() * pool.length);
+    selectedItems.push(pool[randomIndex]);
+    pool.splice(randomIndex, 1);
   }
+
   return selectedItems;
 }
 const modal = document.getElementById("modal");
@@ -95,9 +97,10 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-function openModal(src) {
+function openModal(src, alt) {
   modal.style.display = "block";
   modalImg.src = src;
+  modalImg.alt = alt;
 }
 
 modal.onclick = function (event) {
@@ -112,7 +115,7 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-const selectedImages = shuffle(images);
+const selectedImages = pickRandomImages(images, 9);
 // Create HTML for the selected images
 const photoGrid = document.getElementById("photo-grid");
 const modalImg = document.getElementById("modal-image");
@@ -122,24 +125,22 @@ modalImg.onclick = function (event) {
 };
 
 selectedImages.forEach((item) => {
-  const img = new Image();
-  img.src = item.src;
-  img.alt = item.alt;
+  const cardDiv = document.createElement("img");
+  cardDiv.className = "card";
+  cardDiv.src = item.src;
+  cardDiv.alt = item.alt;
+  cardDiv.loading = "lazy";
+  cardDiv.decoding = "async";
 
-  img.onload = () => {
-    const cardDiv = document.createElement("img");
-    cardDiv.className = "card";
-    cardDiv.src = item.src;
-    cardDiv.alt = item.alt;
-
-    cardDiv.onclick = function () {
-      openModal(this.src);
-    };
-
-    if (img.width > img.height) {
-      cardDiv.classList.add("card-wide");
+  cardDiv.onload = function () {
+    if (this.naturalWidth > this.naturalHeight) {
+      this.classList.add("card-wide");
     }
-
-    photoGrid.appendChild(cardDiv);
   };
+
+  cardDiv.onclick = function () {
+    openModal(this.src, this.alt);
+  };
+
+  photoGrid.appendChild(cardDiv);
 });

@@ -537,6 +537,8 @@ for (const [filename, captionText, color] of selectedPortraitImages) {
   imageWrapper.className = "image-wrapper";
 
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = "artwork/" + filename;
   img.alt = captionText;
   img.dataset.splotchColor = color;

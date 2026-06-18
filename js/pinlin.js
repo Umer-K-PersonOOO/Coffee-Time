@@ -172,6 +172,8 @@ function createImageWrapper(artwork, className) {
   imageWrapper.className = `image-wrapper ${className}`;
 
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = `artwork/${artwork[0]}`;
   img.alt = artwork[1];
   imageWrapper.appendChild(img);

@@ -596,6 +596,8 @@ function renderAllenerieGallery() {
     });
 
     const img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
     img.src = src;
     img.alt = captionText;
     img.loading = "lazy";

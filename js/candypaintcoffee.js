@@ -56,6 +56,8 @@ function createPolaroidCard(image, index, scheduleStringUpdate) {
   photoArea.className = "candypaint-photo-area";
 
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = image[0];
   img.alt = image[1];
   img.addEventListener("load", scheduleStringUpdate);

@@ -228,10 +228,14 @@ var backCan = Canvallax({
     imageWrapper2.className = "image-wrapper one-half";
 
     const img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
     img.src = "artwork/" + landscape_artwork_src[0];
     img.alt = landscape_artwork_src[1];
     addEventListener(imageWrapper, landscape_artwork_src);
     const img2 = new Image();
+    img2.loading = "lazy";
+    img2.decoding = "async";
     img2.src = "artwork/" + landscape_artwork2_src[0];
     img2.alt = landscape_artwork2_src[1];
     addEventListener(imageWrapper2, landscape_artwork2_src);
@@ -266,14 +270,20 @@ var backCan = Canvallax({
     imageWrapper3.className = "image-wrapper one-thirds";
 
     const img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
     img.src = "artwork/" + portrait_artwork_src[0];
     img.alt = portrait_artwork_src[1];
     addEventListener(imageWrapper, portrait_artwork_src);
     const img2 = new Image();
+    img2.loading = "lazy";
+    img2.decoding = "async";
     img2.src = "artwork/" + portrait_artwork2_src[0];
     img2.alt = portrait_artwork2_src[1];
     addEventListener(imageWrapper2, portrait_artwork2_src);
     const img3 = new Image();
+    img3.loading = "lazy";
+    img3.decoding = "async";
     img3.src = "artwork/" + portrait_artwork3_src[0];
     img3.alt = portrait_artwork3_src[1];
     addEventListener(imageWrapper3, portrait_artwork3_src);
@@ -310,10 +320,14 @@ var backCan = Canvallax({
     imageWrapper2.className = "image-wrapper two-thirds";
 
     const img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
     img.src = "artwork/" + portrait_artwork_src[0];
     img.alt = portrait_artwork_src[1];
     addEventListener(imageWrapper, portrait_artwork_src);
     const img2 = new Image();
+    img2.loading = "lazy";
+    img2.decoding = "async";
     img2.src = "artwork/" + landscape_artwork_src[0];
     img2.alt = landscape_artwork_src[1];
     addEventListener(imageWrapper2, landscape_artwork_src);
@@ -345,10 +359,14 @@ var backCan = Canvallax({
     imageWrapper2.className = "image-wrapper one-thirds";
 
     const img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
     img.src = "artwork/" + landscape_artwork_src[0];
     img.alt = landscape_artwork_src[1];
     addEventListener(imageWrapper, landscape_artwork_src);
     const img2 = new Image();
+    img2.loading = "lazy";
+    img2.decoding = "async";
     img2.src = "artwork/" + portrait_artwork_src[0];
     img2.alt = portrait_artwork_src[1];
     addEventListener(imageWrapper2, portrait_artwork_src);
@@ -431,6 +449,8 @@ var backCan = Canvallax({
   const imageWrapper = document.createElement("div");
   imageWrapper.className = "image-wrapper large-image";
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = "artwork/" + landscape_artwork_src[0];
   img.alt = landscape_artwork_src[1];
   addEventListener(imageWrapper, landscape_artwork_src);

@@ -61,9 +61,13 @@ function doubleLandscape(landscape_array) {
   imageWrapper2.className = "image-wrapper one-half";
 
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = "artwork/" + landscape_artwork_src[0];
   img.alt = landscape_artwork_src[1];
   const img2 = new Image();
+  img2.loading = "lazy";
+  img2.decoding = "async";
   img2.src = "artwork/" + landscape_artwork2_src[0];
   img2.alt = landscape_artwork2_src[1];
 
@@ -94,9 +98,13 @@ function left_port_right_land(portrait_array, landscape_array) {
   imageWrapper2.className = "image-wrapper two-thirds";
 
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = "artwork/" + portrait_artwork_src[0];
   img.alt = portrait_artwork_src[1];
   const img2 = new Image();
+  img2.loading = "lazy";
+  img2.decoding = "async";
   img2.src = "artwork/" + landscape_artwork_src[0];
   img2.alt = landscape_artwork_src[1];
 
@@ -127,9 +135,13 @@ function right_port_left_landscape(portrait_array, landscape_array) {
   imageWrapper2.className = "image-wrapper one-thirds";
 
   const img = new Image();
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = "artwork/" + landscape_artwork_src[0];
   img.alt = landscape_artwork_src[1];
   const img2 = new Image();
+  img2.loading = "lazy";
+  img2.decoding = "async";
   img2.src = "artwork/" + portrait_artwork_src[0];
   img2.alt = portrait_artwork_src[1];
 
