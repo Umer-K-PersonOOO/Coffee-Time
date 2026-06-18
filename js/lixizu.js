@@ -1,9 +1,9 @@
 const portrait_artwork = [
   ["lixizu1.jpg", "Genshin Impact, Yae Miko", "#e8325c"],
   ["lixizu2.jpg", "Genshin Impact, Ganyu", "#69a8f2"],
-  ["lixizu3.jpg", "Genshin Impact, Chongyun", "#4fc6e3"],
+  ["lixizu3.jpg", "Genshin Impact, Chongyun", "#00b6e2"],
   ["lixizu4.jpg", "Genshin Impact, Keqing", "#9040f3"],
-  ["lixizu5.jpg", "Genshin Impact, Xiao", "#76c9a2"],
+  ["lixizu5.jpg", "Genshin Impact, Xiao", "#2bb675"],
   ["lixizu6.jpg", "Genshin Impact, Hu Tao", "#c61e38"],
 ];
 
