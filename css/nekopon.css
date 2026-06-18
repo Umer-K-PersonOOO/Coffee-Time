@@ -1,3 +1,102 @@
+.nekopon-diamond-page {
+    --nekopon-diamond-rgb: 215, 116, 124;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.nekopon-diamond-page > main,
+.nekopon-diamond-page > .artists-socials,
+.nekopon-diamond-page > .button-row,
+.nekopon-diamond-page > .item-row,
+.nekopon-diamond-page > .spacer,
+.nekopon-diamond-page > #artwork-stuff,
+.nekopon-diamond-page > #stickers,
+.nekopon-diamond-page > #decals {
+    position: relative;
+    z-index: 1;
+}
+
+.nekopon-diamond-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: var(--nekopon-diamond-height, 100%);
+    min-height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nekopon-diamond-chain {
+    position: absolute;
+    left: var(--chain-x);
+    top: var(--chain-y);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--diamond-size) * 0.08);
+    opacity: var(--chain-opacity);
+    filter: blur(var(--chain-blur));
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--chain-angle))
+        scale(var(--chain-scale, 1));
+    transform-origin: center;
+    transition: opacity 0.55s ease;
+    animation: nekopon-diamond-drift var(--chain-duration) ease-in-out infinite alternate;
+    animation-delay: var(--chain-delay);
+    will-change: transform;
+}
+
+.nekopon-chain-diamond {
+    width: var(--diamond-size);
+    height: var(--diamond-size);
+    background:
+        radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.28), transparent 30%),
+        rgba(var(--nekopon-diamond-rgb), 0.9);
+    clip-path: polygon(
+        50% 0%,
+        62% 34%,
+        100% 50%,
+        62% 66%,
+        50% 100%,
+        38% 66%,
+        0% 50%,
+        38% 34%
+    );
+    box-shadow:
+        0 0 calc(var(--diamond-size) * 0.36) rgba(var(--nekopon-diamond-rgb), 0.36),
+        inset 0 0 calc(var(--diamond-size) * 0.16) rgba(255, 255, 255, 0.24);
+    transition: background-color 0.55s ease, box-shadow 0.55s ease;
+}
+
+.nekopon-chain-diamond:nth-child(even) {
+    transform: translateX(calc(var(--diamond-size) * 0.16)) scale(0.78);
+}
+
+.nekopon-chain-diamond:nth-child(3n) {
+    transform: translateX(calc(var(--diamond-size) * -0.12)) scale(0.9);
+}
+
+@keyframes nekopon-diamond-drift {
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--chain-angle))
+            scale(var(--chain-scale, 1));
+    }
+
+    to {
+        transform:
+            translate(
+                calc(-50% + var(--chain-drift-x)),
+                calc(-50% + var(--chain-drift-y))
+            )
+            rotate(calc(var(--chain-angle) + var(--chain-rotate)))
+            scale(calc(var(--chain-scale, 1) * 1.04));
+    }
+}
+
 .new-socials {
     margin-top: calc(var(--app-vh) * 15);
     align-items: start;
