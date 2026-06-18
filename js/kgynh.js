@@ -29,6 +29,28 @@ const extraArtworkContainer = document.getElementById(
   "extra-artwork-container"
 );
 
+function updateGlassPointer(event) {
+  const containerRect = extraArtworkContainer.getBoundingClientRect();
+
+  extraArtworkContainer.style.setProperty(
+    "--mouse-x",
+    `${event.clientX - containerRect.left}px`
+  );
+  extraArtworkContainer.style.setProperty(
+    "--mouse-y",
+    `${event.clientY - containerRect.top}px`
+  );
+
+  for (const card of extraArtworkContainer.getElementsByClassName(
+    "image-wrapper"
+  )) {
+    const rect = card.getBoundingClientRect();
+
+    card.style.setProperty("--mouse-x", `${event.clientX - rect.left}px`);
+    card.style.setProperty("--mouse-y", `${event.clientY - rect.top}px`);
+  }
+}
+
 function doubleLandscape(landscape_array) {
   const landscape_artwork_src = landscape_array.pop();
   const landscape_artwork2_src = landscape_array.pop();
@@ -175,3 +197,5 @@ for (let i = 0; i < sizedImages.length; i++) {
   extraArtworkContainer.appendChild(sizedImages[i][0]);
   extraArtworkContainer.appendChild(sizedImages[i][1]);
 }
+
+extraArtworkContainer.addEventListener("pointermove", updateGlassPointer);
