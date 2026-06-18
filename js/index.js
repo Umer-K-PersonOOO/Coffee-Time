@@ -91,13 +91,35 @@ function shuffle(array) {
   return selectedItems;
 }
 const modal = document.getElementById("modal");
-modal.onclick = function () {
+function closeModal() {
   modal.style.display = "none";
+}
+
+function openModal(src) {
+  modal.style.display = "block";
+  modalImg.src = src;
+}
+
+modal.onclick = function (event) {
+  if (event.target === modal) {
+    closeModal();
+  }
 };
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && modal.style.display === "block") {
+    closeModal();
+  }
+});
+
 const selectedImages = shuffle(images);
 // Create HTML for the selected images
 const photoGrid = document.getElementById("photo-grid");
 const modalImg = document.getElementById("modal-image");
+
+modalImg.onclick = function (event) {
+  event.stopPropagation();
+};
 
 selectedImages.forEach((item) => {
   const img = new Image();
@@ -111,13 +133,7 @@ selectedImages.forEach((item) => {
     cardDiv.alt = item.alt;
 
     cardDiv.onclick = function () {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-    };
-
-    modalImg.onclick = function () {
-      modal.style.display = "block";
-      modalImg.src = this.src;
+      openModal(this.src);
     };
 
     if (img.width > img.height) {
