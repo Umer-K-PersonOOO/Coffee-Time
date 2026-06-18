@@ -1,21 +1,69 @@
-<!-- TODO: When gain a url make sure to update teh sitemap.xml and robots.txt and this https://search.google.com/search-console/about -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#2e2e2e" />
+    <link rel="dns-prefetch" href="https://docs.google.com" />
+    <link rel="dns-prefetch" href="https://www.google.com" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
-    </noscript>
     <meta
       name="description"
-      content="Screen Savor and Coffee is an anime/art cafe located in Japan Town, Cali Bay area, showcasing art from local Bay Area artists. Explore the cafe's menu, view artwork, and find links to artist pages. Artists featured: candypaintcafe, burntgreentea, mistiousstar, batsouppe, allenerie, batensan, rumikuu, nekopon, aitsuki, lixizu, pinlin, and kgynh."
+      content="Screen Savor Art and Coffee is a San Francisco Japantown cafe and local art shop with coffee, prints, stickers, and featured Bay Area artists."
     />
-    <title>Screen Savor Art and Coffee</title>
-</head>
+    <link rel="canonical" href="https://coffee-time-6k7.pages.dev/" />
+    <meta property="og:title" content="Screen Savor Art and Coffee" />
+    <meta
+      property="og:description"
+      content="Coffee, local art, prints, and stickers in San Francisco Japantown."
+    />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="https://coffee-time-6k7.pages.dev/" />
+    <meta
+      property="og:image"
+      content="https://coffee-time-6k7.pages.dev/images/coffe1_cleanup.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Screen Savor Art and Coffee" />
+    <meta
+      name="twitter:description"
+      content="Coffee, local art, prints, and stickers in San Francisco Japantown."
+    />
+    <meta
+      name="twitter:image"
+      content="https://coffee-time-6k7.pages.dev/images/coffe1_cleanup.webp"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["CafeOrCoffeeShop", "ArtGallery"],
+        "name": "Screen Savor Art and Coffee",
+        "url": "https://coffee-time-6k7.pages.dev/",
+        "image": "https://coffee-time-6k7.pages.dev/images/coffe1_cleanup.webp",
+        "description": "A San Francisco Japantown cafe and local art shop with coffee, prints, stickers, and featured Bay Area artists.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "22 Peace Plaza #511",
+          "addressLocality": "San Francisco",
+          "addressRegion": "CA",
+          "postalCode": "94115",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.785162358622166,
+          "longitude": -122.42979891187555
+        },
+        "sameAs": [
+          "https://www.instagram.com/screensavor",
+          "https://www.twitter.com/screensavor"
+        ]
+      }
+    </script>
+    <title>Screen Savor Art and Coffee | San Francisco Japantown</title>
+  </head>
 
   <body>
     <!-- Header -->
@@ -23,35 +71,43 @@
       <div class="header-container">
         <a href="/"><h1>Screen Savor</h1></a>
         <div class="ham-menu">
-          <svg
-            width="35px"
-            height="35px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            href="javascript:void(0);"
+          <button
+            type="button"
             class="hamburger"
+            aria-label="Toggle navigation"
+            aria-controls="tags"
+            aria-expanded="false"
             onclick="myFunction()"
           >
-            <path
-              d="M4 18L23 18"
-              stroke="#ffffff"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M4 12L23 12"
-              stroke="#ffffff"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M4 6L23 6"
-              stroke="#ffffff"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
+            <svg
+              width="35px"
+              height="35px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M4 18L23 18"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M4 12L23 12"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M4 6L23 6"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
           <nav id="tags">
             <a href="/#art">art</a>
             <a href="/#menu">menu</a>
@@ -65,7 +121,15 @@
     <!-- Main Content -->
     <main>
       <div class="image-container">
-        <img src="./images/coffe1_cleanup.webp" alt="Coffee Art" />
+        <picture>
+
+          <source type="image/avif" srcset="./images/coffe1_cleanup.avif 720w" sizes="100vw" />
+
+          <source type="image/webp" srcset="./images/coffe1_cleanup-360.webp 360w, ./images/coffe1_cleanup.webp 720w" sizes="100vw" />
+
+          <img src="./images/coffe1_cleanup.webp" alt="Screen Savor coffee and art cafe" loading="eager" fetchpriority="high" decoding="async" width="720" height="466" sizes="100vw" />
+
+        </picture>
         <div class="centered-text">
           <h2>screen savor</h2>
           <h3>art and coffee</h3>
@@ -90,40 +154,40 @@
       <h2>Click to view more from our featured artists:</h2>
       <div class="image-grid">
         <a href="/candypaintcafe.html">
-          <img src="images/candypaintcafepfp.avif" alt="candypaintcafe"
+          <img loading="lazy" decoding="async" src="images/candypaintcafepfp.avif" alt="candypaintcafe" width="400" height="400"
         /></a>
         <a href="/burntgreentea.html">
-          <img src="images/burntgreenteapfp.avif" alt="burntgreentea"
+          <img loading="lazy" decoding="async" src="images/burntgreenteapfp.avif" alt="burntgreentea" width="356" height="356"
         /></a>
         <a href="/mistiousstar.html">
-          <img src="images/mistiousstarpfp.avif" alt="mistiousstar"
+          <img loading="lazy" decoding="async" src="images/mistiousstarpfp.avif" alt="mistiousstar" width="400" height="400"
         /></a>
         <a href="/batsouppe.html">
-          <img src="images/batsouppepfp.avif" alt="batsouppe"
+          <img loading="lazy" decoding="async" src="images/batsouppepfp.avif" alt="batsouppe" width="400" height="400"
         /></a>
         <a href="/allenerie.html">
-          <img src="images/alleneriepfp.avif" alt="allenerie"
+          <img loading="lazy" decoding="async" src="images/alleneriepfp.avif" alt="allenerie" width="400" height="400"
         /></a>
         <a href="/batensan.html">
-          <img src="images/batensanpfp.avif" alt="batensan"
+          <img loading="lazy" decoding="async" src="images/batensanpfp.avif" alt="batensan" width="400" height="400"
         /></a>
         <a href="/rumikuu.html">
-          <img src="images/rumikuupfp.avif" alt="rumikuu"
+          <img loading="lazy" decoding="async" src="images/rumikuupfp.avif" alt="rumikuu" width="400" height="400"
         /></a>
         <a href="/nekopon.html">
-          <img src="images/nekoponpfp.avif" alt="nekopon"
+          <img loading="lazy" decoding="async" src="images/nekoponpfp.avif" alt="nekopon" width="287" height="287"
         /></a>
         <a href="/aitsuki.html">
-          <img src="images/aitsukipfp.avif" alt="aitsuki"
+          <img loading="lazy" decoding="async" src="images/aitsukipfp.avif" alt="aitsuki" width="400" height="400"
         /></a>
         <a href="/lixizu.html">
-          <img src="images/lixizupfp.avif" alt="lixizu"
+          <img loading="lazy" decoding="async" src="images/lixizupfp.avif" alt="lixizu" width="400" height="400"
         /></a>
         <a href="/pinlin.html">
-          <img src="images/pinlinpfp.avif" alt="pinlin"
+          <img loading="lazy" decoding="async" src="images/pinlinpfp.avif" alt="pinlin" width="400" height="400"
         /></a>
         <a href="/kgynh.html">
-          <img src="images/kgynhpfp.avif" alt="kgynh"
+          <img loading="lazy" decoding="async" src="images/kgynhpfp.avif" alt="kgynh" width="400" height="400"
         /></a>
       </div>
     </div>
@@ -132,7 +196,7 @@
       <!-- <span class="close">&times;</span> -->
 
       <!-- Modal Content (The Image) -->
-        <img class="modal-content" id="modal-image">
+        <img loading="lazy" decoding="async" class="modal-content" id="modal-image">
     </div>
 
     <!-- Divider -->
@@ -165,7 +229,12 @@
         <div class="pink-bubble"></div>
         <div class="waitress-container">
           <div class="media-container">
-            <a href="https://www.instagram.com/screensavor" target="_blank">
+            <a
+              href="https://www.instagram.com/screensavor"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Screen Savor on Instagram"
+            >
               <svg
                 id="instagram"
                 xmlns="http://www.w3.org/2000/svg"
@@ -219,7 +288,12 @@
                 <circle cx="12.3" cy="3.7" r=".533" fill="url(#c)"></circle>
               </svg>
             </a>
-            <a href="https://www.twitter.com/screensavor" target="_blank">
+            <a
+              href="https://www.twitter.com/screensavor"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Screen Savor on X"
+            >
               <svg
                 id="twitter"
                 width="1200"
@@ -238,7 +312,7 @@
           </div>
           <div class="speech-bubble">
             <div class="bubble-text">Make sure to drop a follow!</div>
-            <img src="images/transparent.avif" alt="Crema" />
+            <img loading="lazy" decoding="async" src="images/transparent.avif" alt="Crema" width="1162" height="1723" />
           </div>
         </div>
       </div>
@@ -251,26 +325,25 @@
     <!-- Location + footer -->
     <footer>
       <div class="footer-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d788.3020275297708!2d-122.42979891187555!3d37.785162358622166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5544c0bcc6ac3bdc!2zMzfCsDQ3JzA2LjYiTiAxMjLCsDI1JzQ1LjMiVw!5e0!3m2!1sen!2sus!4v1645131452840!5m2!1sen!2sus"
-          width="50%"
-          height="300"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          title="location"
+        <div
+          class="embed-placeholder"
+          data-heavy-embed
+          data-embed-title="location"
+          data-embed-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d788.3020275297708!2d-122.42979891187555!3d37.785162358622166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5544c0bcc6ac3bdc!2zMzfCsDQ3JzA2LjYiTiAxMjLCsDI1JzQ1LjMiVw!5e0!3m2!1sen!2sus!4v1645131452840!5m2!1sen!2sus"
         >
-        </iframe>
-        <div class="address">
-          <p>japan center east mall 2nd floor</p>
-          <p>22 peace plaza #511 san francisco ca 94115</p>
+          <button type="button" class="load-embed">Load map</button>
         </div>
+        <address class="address">
+          <p>Japan Center East Mall, 2nd floor</p>
+          <p>22 Peace Plaza #511, San Francisco, CA 94115</p>
+        </address>
       </div>
       <div class="footer-bottom">
-        <p>&copy; screen savor 2024</p>
+        <p>&copy; screen savor 2026</p>
       </div>
     </footer>
-    <script src="script.js"></script>
-    <script src="js/index.js"></script>
+    <script src="script.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <script src="js/embed-loader.js" defer></script>
   </body>
 </html>

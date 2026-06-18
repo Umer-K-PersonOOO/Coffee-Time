@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#2e2e2e" />
+    <meta name="description" content="Browse Nekopon's prints, stickers, decals, and artist links at Screen Savor Art and Coffee in San Francisco Japantown." />
+    <link rel="canonical" href="https://coffee-time-6k7.pages.dev/nekopon.html" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/nekopon.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-      rel="stylesheet"
-    />
     <title>Screen Savor Nekopon</title>
   </head>
   <body>
@@ -17,11 +17,7 @@
       <div class="header-container">
         <a href="/"><h1>Screen Savor</h1></a>
         <div class="ham-menu">
-          <a
-            href="javascript:void(0);"
-            class="hamburger"
-            onclick="myFunction()"
-          >
+          <button type="button" class="hamburger" aria-label="Toggle navigation" aria-controls="tags" aria-expanded="false" onclick="myFunction()">
             <svg
               width="35px"
               height="35px"
@@ -48,7 +44,7 @@
                 stroke-linecap="round"
               />
             </svg>
-          </a>
+          </button>
           <nav id="tags">
             <a href="/#art">art</a>
             <a href="/#menu">menu</a>
@@ -62,15 +58,23 @@
     <!-- Main Content -->
     <main>
       <div class="image-container">
-        <img src="./images/coffe1_cleanup.webp" alt="Coffee Art" />
+        <picture>
+
+          <source type="image/avif" srcset="./images/coffe1_cleanup.avif 720w" sizes="100vw" />
+
+          <source type="image/webp" srcset="./images/coffe1_cleanup-360.webp 360w, ./images/coffe1_cleanup.webp 720w" sizes="100vw" />
+
+          <img src="./images/coffe1_cleanup.webp" alt="Screen Savor coffee and art cafe" loading="eager" fetchpriority="high" decoding="async" width="720" height="466" sizes="100vw" />
+
+        </picture>
         <div class="centered-text">
           <h2>Nekopon</h2>
         </div>
       </div>
-      <img
-        src="images/nekoponpfp.jpg"
+      <img loading="lazy" decoding="async"
+        src="images/nekoponpfp.avif"
         alt="nekoponpfp"
-        class="artists-socials-pfp-middle"
+        class="artists-socials-pfp-middle" width="287" height="287"
       />
     </main>
 
@@ -197,29 +201,29 @@
     <div id="artwork-stuff">
       <div class="image-grid">
         <div class="image-wrapper">
-          <img src="artwork/nekopon2.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/nekopon2.jpg" alt="art" width="647" height="992" />
           <div class="caption">Nikke: Goddess of Victory, Helm</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/nekopon3.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/nekopon3.jpg" alt="art" width="647" height="992" />
           <div class="caption">Nikke: Goddess of Victory, Red Hood</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/nekopon4.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/nekopon4.jpg" alt="art" width="647" height="992" />
           <div class="caption">Uma Musume, Rice Shower</div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/cat_festival.webp" alt="art" />
+          <img loading="lazy" decoding="async" src="nekopon/cat_festival.webp" alt="art" width="794" height="1228" />
           <div class="caption">Granblue Fantasy, Yuel</div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/snow_queen.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="nekopon/snow_queen.jpg" alt="art" width="1588" height="2454" />
           <div class="caption">
             Goddess of Victory: Nikke, Ludmilla Winter Owner
           </div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/kaguya.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="nekopon/kaguya.jpg" alt="art" width="1588" height="2455" />
           <div class="caption">Love is War, Kaguya Shinomiya</div>
         </div>
       </div>
@@ -232,27 +236,27 @@
         id="extra-artwork-container"
       >
         <div class="image-wrapper one-thirds">
-          <img class="" src="nekopon/annaversity.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/annaversity.webp" alt="art" width="1588" height="2456" />
           <div class="caption">Nekopon</div>
         </div>
         <div class="image-wrapper two-thirds">
-          <img class="" src="artwork/nekopon5.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/nekopon5.jpg" alt="art" width="992" height="647" />
           <div class="caption">Granblue Fantasy, Zooey Zoe</div>
         </div>
         <div class="image-wrapper two-thirds">
-          <img class="" src="nekopon/haruki.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/haruki.webp" alt="art" width="1588" height="1027" />
           <div class="caption">VShojo, Haruki & Chama</div>
         </div>
         <div class="image-wrapper one-thirds">
-          <img class="" src="nekopon/bath_time.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/bath_time.webp" alt="art" width="1588" height="2021" />
           <div class="caption">Nekopon</div>
         </div>
         <div class="image-wrapper two-thirds">
-          <img class="" src="nekopon/ChaldeaGuru.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/ChaldeaGuru.webp" alt="art" width="1588" height="1085" />
           <div class="caption">ChaldeaGurus, Mochi</div>
         </div>
         <div class="image-wrapper one-thirds">
-          <img class="" src="nekopon/cat_cafe.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/cat_cafe.webp" alt="art" width="1588" height="1588" />
           <div class="caption">Uma Musume, Suzuka</div>
         </div>
       </div>
@@ -262,29 +266,29 @@
     <div id="stickers">
       <div class="simple-display">
         <div class="image-wrapper">
-          <img src="nekopon/rosa_sticker.webp" alt="" />
+          <img loading="lazy" decoding="async" src="nekopon/rosa_sticker.webp" alt="" width="1588" height="1588" />
           <div class="caption">Super Mario Galaxy, Rosalina</div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/valentine_sticker.jpg" alt="" />
+          <img loading="lazy" decoding="async" src="nekopon/valentine_sticker.webp" alt="" width="1588" height="1588" />
           <div class="caption">Goddess of Victory: Nikke, Rapi</div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/kirijo_sticker.jpg" alt="" />
+          <img loading="lazy" decoding="async" src="nekopon/kirijo_sticker.webp" alt="" width="1588" height="1588" />
           <div class="caption">Persona 3 Reload, Mitsuru Kirijo</div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/demon_sticker.webp" alt="" />
+          <img loading="lazy" decoding="async" src="nekopon/demon_sticker.webp" alt="" width="1588" height="1588" />
           <div class="caption">Nikke: Goddess of Victory, Red Hood</div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/snow_sticker.webp" alt="" />
+          <img loading="lazy" decoding="async" src="nekopon/snow_sticker.webp" alt="" width="1588" height="1588" />
           <div class="caption">
             Goddess of Victory: Nikke, Ludmilla Winter Owner
           </div>
         </div>
         <div class="image-wrapper">
-          <img src="nekopon/p3_sticker.webp" alt="" />
+          <img loading="lazy" decoding="async" src="nekopon/p3_sticker.webp" alt="" width="1588" height="1588" />
           <div class="caption">Persona 3 Reload, Yukari Takeba</div>
         </div>
       </div>
@@ -294,74 +298,38 @@
     <div id="decals">
       <div class="extra-artwork-container">
         <div class="image-wrapper one-quarter">
-          <img class="" src="nekopon/modernia_decal.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/modernia_decal.webp" alt="art" width="1588" height="1292" />
           <div class="caption">Nikke, Modernia</div>
         </div>
         <div class="image-wrapper one-quarter">
-          <img class="" src="nekopon/dorothy_decal.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/dorothy_decal.webp" alt="art" width="1588" height="1353" />
           <div class="caption">Nikke, Dorothy</div>
         </div>
         <div class="image-wrapper one-quarter">
-          <img class="" src="nekopon/rapi_decal.webp" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/rapi_decal.webp" alt="art" width="1588" height="1426" />
           <div class="caption">Nikke, Rapi</div>
         </div>
         <div class="image-wrapper one-quarter">
-          <img class="" src="nekopon/anis_decal.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="nekopon/anis_decal.jpg" alt="art" width="640" height="557" />
           <div class="caption">Nikke, Anis</div>
         </div>
       </div>
     </div>
 
-    <div class="artist-sidebar" id="artist-sidebar">
-      <div class="pfp-grid">
-        <a href="/candypaintcafe.html">
-          <img src="images/candypaintcafepfp.jpg" alt="candypaintcafe" />
-        </a>
-        <a href="/burntgreentea.html">
-          <img src="images/burntgreenteapfp.jpg" alt="burntgreentea" />
-        </a>
-        <a href="/mistiousstar.html">
-          <img src="images/mistiousstarpfp.jpg" alt="mistiousstar" />
-        </a>
-        <a href="/batsouppe.html">
-          <img src="images/batsouppepfp.png" alt="batsouppe" />
-        </a>
-        <a href="/allenerie.html">
-          <img src="images/alleneriepfp.jpg" alt="allenerie" />
-        </a>
-        <a href="/batensan.html">
-          <img src="images/batensanpfp.jpg" alt="batensan" />
-        </a>
-        <a href="/rumikuu.html">
-          <img src="images/rumikuupfp.jpg" alt="nekopon" />
-        </a>
-        <a href="/nekopon.html">
-          <img src="images/nekoponpfp.jpg" alt="nekopon" />
-        </a>
-        <a href="/aitsuki.html">
-          <img src="images/aitsukipfp.jpg" alt="aitsuki" />
-        </a>
-        <a href="/lixizu.html">
-          <img src="images/lixizupfp.jpg" alt="lixizu" />
-        </a>
-        <a href="/pinlin.html">
-          <img src="images/pinlinpfp.jpg" alt="pinlin" />
-        </a>
-        <a href="/kgynh.html">
-          <img src="images/kgynhpfp.jpg" alt="kgynh" />
-        </a>
-      </div>
-    </div>
+    <div class="artist-sidebar" id="artist-sidebar"></div>
     <button class="open-sidebar" id="open-sidebar" onclick="toggleSidebar()">
       &#171;
     </button>
 
-    <script src="script.js"></script>
-    <script src="js/nekopon.js"></script>
-  </body>
+    <script src="js/artist-sidebar.js" defer></script>
+
+
+    <script src="script.js" defer></script>
+    <script src="js/nekopon.js" defer></script>
   <footer>
     <div class="footer-bottom">
-      <p>&copy; screen savor 2024</p>
+      <p>&copy; screen savor 2026</p>
     </div>
   </footer>
+  </body>
 </html>

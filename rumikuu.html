@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#2e2e2e" />
+    <meta name="description" content="Browse Rumikuu's prints, keychains, and artist links at Screen Savor Art and Coffee in San Francisco Japantown." />
+    <link rel="canonical" href="https://coffee-time-6k7.pages.dev/rumikuu.html" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/rumikuu.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-      rel="stylesheet"
-    />
     <title>Screen Savor Rumikuu</title>
   </head>
   <body>
@@ -17,11 +17,7 @@
       <div class="header-container">
         <a href="/"><h1>Screen Savor</h1></a>
         <div class="ham-menu">
-          <a
-            href="javascript:void(0);"
-            class="hamburger"
-            onclick="myFunction()"
-          >
+          <button type="button" class="hamburger" aria-label="Toggle navigation" aria-controls="tags" aria-expanded="false" onclick="myFunction()">
             <svg
               width="35px"
               height="35px"
@@ -48,7 +44,7 @@
                 stroke-linecap="round"
               />
             </svg>
-          </a>
+          </button>
           <nav id="tags">
             <a href="/#art">art</a>
             <a href="/#menu">menu</a>
@@ -62,12 +58,20 @@
     <!-- Main Content -->
     <main>
       <div class="image-container">
-        <img src="./images/coffe1_cleanup.webp" alt="Coffee Art" />
+        <picture>
+
+          <source type="image/avif" srcset="./images/coffe1_cleanup.avif 720w" sizes="100vw" />
+
+          <source type="image/webp" srcset="./images/coffe1_cleanup-360.webp 360w, ./images/coffe1_cleanup.webp 720w" sizes="100vw" />
+
+          <img src="./images/coffe1_cleanup.webp" alt="Screen Savor coffee and art cafe" loading="eager" fetchpriority="high" decoding="async" width="720" height="466" sizes="100vw" />
+
+        </picture>
         <div class="centered-text">
           <h2>Rumikuu</h2>
         </div>
       </div>
-      <img src="images/rumikuupfp.jpg" alt="rumikuupfp" class="artists-socials-pfp-middle" />
+      <img loading="lazy" decoding="async" src="images/rumikuupfp.avif" alt="rumikuupfp" class="artists-socials-pfp-middle" width="400" height="400" />
     </main>
 
     <div class="artists-socials new-socials">
@@ -197,27 +201,27 @@
     <div id="artwork-stuff">
       <div class="image-grid">
         <div class="image-wrapper">
-          <img src="artwork/rumikuu19.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/rumikuu19.jpg" alt="art" width="3906" height="6038" />
           <div class="caption">hololive, hoshimachi suisei</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/rumikuu18.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/rumikuu18.jpg" alt="art" width="3375" height="5173" />
           <div class="caption">honkai: star rail, ruan mei</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/rumikuu16.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/rumikuu16.jpg" alt="art" width="842" height="1291" />
           <div class="caption">holomyth, kiara takanashi</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/rumikuu15.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/rumikuu15.jpg" alt="art" width="990" height="1518" />
           <div class="caption">holomyth, amelia watson</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/rumikuu12.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/rumikuu12.jpg" alt="art" width="990" height="1518" />
           <div class="caption">holomyth, ninomae ina'nis</div>
         </div>
         <div class="image-wrapper">
-          <img src="artwork/rumikuu11.jpg" alt="art" />
+          <img loading="lazy" decoding="async" src="artwork/rumikuu11.jpg" alt="art" width="950" height="1457" />
           <div class="caption">holomyth, mori calliope</div>
         </div>
       </div>
@@ -229,35 +233,35 @@
       <!-- More artwork -->
       <div class="extra-artwork-container" id="extra-artwork-container">
         <div class="image-wrapper one-thirds">
-          <img class="" src="artwork/rumikuu10.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu10.jpg" alt="art" width="990" height="1518" />
           <div class="caption">holomyth, gawr gura</div>
         </div>
         <div class="image-wrapper two-thirds">
-          <img class="" src="artwork/rumikuu8.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu8.jpg" alt="art" width="1012" height="660" />
           <div class="caption">genshin impact, nilou</div>
         </div>
         <div class="image-wrapper two-thirds">
-          <img class="" src="artwork/rumikuu13.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu13.jpg" alt="art" width="2530" height="1650" />
           <div class="caption">genshin impact, ganyu, keqing</div>
         </div>
         <div class="image-wrapper one-thirds">
-          <img class="" src="artwork/rumikuu14.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu14.jpg" alt="art" width="990" height="1518" />
           <div class="caption">genshin impac, ganyu</div>
         </div>
         <div class="image-wrapper one-half">
-          <img class="" src="artwork/rumikuu2.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu2.jpg" alt="art" width="1012" height="660" />
           <div class="caption">genshin impact, ei, yae</div>
         </div>
         <div class="image-wrapper one-half">
-          <img class="" src="artwork/rumikuu9.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu9.jpg" alt="art" width="1012" height="660" />
           <div class="caption">genshin impact, yoimiya</div>
         </div>
         <div class="image-wrapper one-half">
-          <img class="" src="artwork/rumikuu1.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu1.jpg" alt="art" width="1105" height="721" />
           <div class="caption">86, shinei, lena</div>
         </div>
         <div class="image-wrapper one-half">
-          <img class="" src="artwork/rumikuu17.jpg" alt="art" />
+          <img loading="lazy" decoding="async" class="" src="artwork/rumikuu17.jpg" alt="art" width="1163" height="759" />
           <div class="caption">oshi no ko, ai</div>
         </div>
       </div>
@@ -265,71 +269,35 @@
 
     <!-- Stickers/ Keychains -->
     <div class="keychains">
-      <img
+      <img loading="lazy" decoding="async"
         id="genshin-keychains"
         src="rumikuu/Genshin+Keychains+v2.webp"
-        alt=""
+        alt="" width="600" height="600"
       />
-      <img
+      <img loading="lazy" decoding="async"
         id="honkai-keychains"
         src="rumikuu/Honkai+Keychains+v2+Social.webp"
-        alt=""
+        alt="" width="600" height="600"
       />
-      <img id="holo-pins" src="rumikuu/holo.webp" alt="" />
-      <img id="rq-stand" src="rumikuu/Irys+standee+social.webp" alt="" />
-      <img id="holo-decal" src="rumikuu/Fuwamoco+Stickies+social.webp" alt="" />
+      <img loading="lazy" decoding="async" id="holo-pins" src="rumikuu/holo.webp" alt="" width="960" height="960" />
+      <img loading="lazy" decoding="async" id="rq-stand" src="rumikuu/Irys+standee+social.webp" alt="" width="960" height="960" />
+      <img loading="lazy" decoding="async" id="holo-decal" src="rumikuu/Fuwamoco+Stickies+social.webp" alt="" width="960" height="960" />
     </div>
 
-    <div class="artist-sidebar" id="artist-sidebar">
-      <div class="pfp-grid">
-        <a href="/candypaintcafe.html">
-          <img src="images/candypaintcafepfp.jpg" alt="candypaintcafe" />
-        </a>
-        <a href="/burntgreentea.html">
-          <img src="images/burntgreenteapfp.jpg" alt="burntgreentea" />
-        </a>
-        <a href="/mistiousstar.html">
-          <img src="images/mistiousstarpfp.jpg" alt="mistiousstar" />
-        </a>
-        <a href="/batsouppe.html">
-          <img src="images/batsouppepfp.png" alt="batsouppe" />
-        </a>
-        <a href="/allenerie.html">
-          <img src="images/alleneriepfp.jpg" alt="allenerie" />
-        </a>
-        <a href="/batensan.html">
-          <img src="images/batensanpfp.jpg" alt="batensan" />
-        </a>
-        <a href="/rumikuu.html">
-          <img src="images/rumikuupfp.jpg" alt="rumikuu" />
-        </a>
-        <a href="/nekopon.html">
-          <img src="images/nekoponpfp.jpg" alt="nekopon" />
-        </a>
-        <a href="/aitsuki.html">
-          <img src="images/aitsukipfp.jpg" alt="aitsuki" />
-        </a>
-        <a href="/lixizu.html">
-          <img src="images/lixizupfp.jpg" alt="lixizu" />
-        </a>
-        <a href="/pinlin.html">
-          <img src="images/pinlinpfp.jpg" alt="pinlin" />
-        </a>
-        <a href="/kgynh.html">
-          <img src="images/kgynhpfp.jpg" alt="kgynh" />
-        </a>
-      </div>
-    </div>
+    <div class="artist-sidebar" id="artist-sidebar"></div>
     <button class="open-sidebar" id="open-sidebar" onclick="toggleSidebar()">
       &#171;
     </button>
 
-    <script src="script.js"></script>
-    <script src="js/rumikuu.js"></script>
-  </body>
+    <script src="js/artist-sidebar.js" defer></script>
+
+
+    <script src="script.js" defer></script>
+    <script src="js/rumikuu.js" defer></script>
   <footer>
     <div class="footer-bottom">
-      <p>&copy; screen savor 2024</p>
+      <p>&copy; screen savor 2026</p>
     </div>
   </footer>
+  </body>
 </html>

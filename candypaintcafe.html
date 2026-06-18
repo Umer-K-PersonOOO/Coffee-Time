@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#2e2e2e" />
+  <meta name="description" content="Browse Candy Paint Cafe's featured art, prints, and artist links at Screen Savor Art and Coffee in San Francisco Japantown." />
+  <link rel="canonical" href="https://coffee-time-6k7.pages.dev/candypaintcafe.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" href="./css/candypaintcoffee.css" />
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
@@ -18,13 +24,13 @@
         <h1>Screen Savor</h1>
       </a>
       <div class="ham-menu">
-        <a href="javascript:void(0);" class="hamburger" onclick="myFunction()">
-          <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button type="button" class="hamburger" aria-label="Toggle navigation" aria-controls="tags" aria-expanded="false" onclick="myFunction()">
+            <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 18L23 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
             <path d="M4 12L23 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
             <path d="M4 6L23 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
           </svg>
-        </a>
+          </button>
         <nav id="tags">
           <a href="/#art">art</a>
           <a href="/#menu">menu</a>
@@ -38,12 +44,20 @@
   <!-- Main Content -->
   <main>
     <div class="image-container">
-      <img src="./images/coffe1_cleanup.webp" alt="Coffee Art" />
+      <picture>
+
+        <source type="image/avif" srcset="./images/coffe1_cleanup.avif 720w" sizes="100vw" />
+
+        <source type="image/webp" srcset="./images/coffe1_cleanup-360.webp 360w, ./images/coffe1_cleanup.webp 720w" sizes="100vw" />
+
+        <img src="./images/coffe1_cleanup.webp" alt="Screen Savor coffee and art cafe" loading="eager" fetchpriority="high" decoding="async" width="720" height="466" sizes="100vw" />
+
+      </picture>
       <div class="centered-text">
         <h2>Candy Paint Cafe</h2>
       </div>
     </div>
-    <img src="images/candypaintcafepfp.jpg" alt="candypaintcafe" class="artists-socials-pfp-middle" />
+    <img loading="lazy" decoding="async" src="images/candypaintcafepfp.avif" alt="candypaintcafe" class="artists-socials-pfp-middle" width="400" height="400" />
   </main>
 
   <div class="artists-socials socials-middle">
@@ -118,46 +132,7 @@
     </a>
   </div>
 
-  <div class="artist-sidebar" id="artist-sidebar">
-    <div class="pfp-grid">
-      <a href="/candypaintcafe.html">
-        <img src="images/candypaintcafepfp.jpg" alt="candypaintcafe" />
-      </a>
-      <a href="/burntgreentea.html">
-        <img src="images/burntgreenteapfp.jpg" alt="burntgreentea" />
-      </a>
-      <a href="/mistiousstar.html">
-        <img src="images/mistiousstarpfp.jpg" alt="mistiousstar" />
-      </a>
-      <a href="/batsouppe.html">
-        <img src="images/batsouppepfp.png" alt="batsouppe" />
-      </a>
-      <a href="/allenerie.html">
-        <img src="images/alleneriepfp.jpg" alt="allenerie" />
-      </a>
-      <a href="/batensan.html">
-        <img src="images/batensanpfp.jpg" alt="batensan" />
-      </a>
-      <a href="/rumikuu.html">
-        <img src="images/rumikuupfp.jpg" alt="nekopon" />
-      </a>
-      <a href="/nekopon.html">
-        <img src="images/nekoponpfp.jpg" alt="nekopon" />
-      </a>
-      <a href="/aitsuki.html">
-        <img src="images/aitsukipfp.jpg" alt="aitsuki" />
-      </a>
-      <a href="/lixizu.html">
-        <img src="images/lixizupfp.jpg" alt="lixizu" />
-      </a>
-      <a href="/pinlin.html">
-        <img src="images/pinlinpfp.jpg" alt="pinlin" />
-      </a>
-      <a href="/kgynh.html">
-        <img src="images/kgynhpfp.jpg" alt="kgynh" />
-      </a>
-    </div>
-  </div>
+  <div class="artist-sidebar" id="artist-sidebar"></div>
   <button class="open-sidebar" id="open-sidebar" onclick="toggleSidebar()">
     &#171;
   </button>
@@ -165,11 +140,13 @@
   <div class="artwork-grid-container" id="artwork-grid-container"></div>
   <footer>
     <div class="footer-bottom">
-      <p>&copy; screen savor 2024</p>
+      <p>&copy; screen savor 2026</p>
     </div>
   </footer>
-  <script src="script.js"></script>
-  <script src="js/candypaintcoffee.js"></script>
+    <script src="js/artist-sidebar.js" defer></script>
+
+  <script src="script.js" defer></script>
+  <script src="js/candypaintcoffee.js" defer></script>
 </body>
 
 </html>
