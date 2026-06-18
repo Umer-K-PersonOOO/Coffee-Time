@@ -1,3 +1,8 @@
 Fix side bar scroll
 Lixi screen size changes needs to decrease canvas size/ reload size.
 something on phones causes a redraw when scrolling
+make esc work for clicking on home page images
+optimize pinlin (sometimes causes crashes on firefox)
+Fix top bar to go to home page as well if on another link
+Frosted glass for kgynh
+Choose more statureated colors for Lixizu
