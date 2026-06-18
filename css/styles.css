@@ -297,6 +297,7 @@ main {
   background-color: rgba(51,51,51,0.9);
   transition: right 0.7s ease;
   z-index: 1000;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -324,7 +325,7 @@ main {
 
 .pfp-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 5px;
   border-radius: 30px;
   justify-items: center;
@@ -332,10 +333,16 @@ main {
   padding: 20px;
 }
 
+.pfp-grid a {
+  display: block;
+  width: min(100%, 100px);
+  aspect-ratio: 1;
+}
+
 .pfp-grid img {
   display: block;
-  width: 100px; /* Ensures all images are the same size */
-  height: 100px; /* Ensures all images are the same size */
+  width: 100%; /* Ensures all images fit the available grid track */
+  height: 100%; /* Ensures all images are square */
   border-radius: 10px;
   object-fit: cover;
 }
@@ -350,9 +357,8 @@ main {
   .pfp-grid {
     padding: 5px;
   }
-  .pfp-grid img {
-    width: min(50px, 14vw);
-    height: min(50px, 14vw);
+  .pfp-grid a {
+    width: min(100%, 50px);
   }
 }
 
