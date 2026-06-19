@@ -38,6 +38,9 @@ document.addEventListener("scroll", function () {
         var x = document.getElementById("tags");
         if (x.style.display === "flex") {
           x.style.display = "none";
+          document
+            .querySelector(".hamburger")
+            ?.setAttribute("aria-expanded", "false");
         }
     } else {
         header.classList.remove("shrink");
@@ -46,13 +49,16 @@ document.addEventListener("scroll", function () {
 
 function myFunction() {
     var x = document.getElementById("tags");
+    var button = document.querySelector(".hamburger");
     if (x.style.display === "flex") {
       x.style.display = "none";
+      button?.setAttribute("aria-expanded", "false");
     } else {
       x.style.display = "flex";
+      button?.setAttribute("aria-expanded", "true");
     }
   }
-  
+
 const sidebar = document.getElementById("artist-sidebar");
 const openSidebarButton = document.getElementById("open-sidebar");
 if (sidebar && openSidebarButton) {
@@ -63,21 +69,27 @@ if (sidebar && openSidebarButton) {
   function toggleSidebar() {
     if (!sidebar || !openSidebarButton) return;
     if (sidebar.style.right === '0px') {
-        sidebar.style.right = '-66vw'; 
-        openSidebarButton.style.right = '0px'; 
+        sidebar.style.right = '-66vw';
+        openSidebarButton.style.right = '0px';
     } else {
         sidebar.style.right = '0px';
-        openSidebarButton.style.right = '66vw'; 
+        openSidebarButton.style.right = '66vw';
     }
 }
 
 function closeSidebar() {
   if (!sidebar || !openSidebarButton) return;
-  sidebar.style.right = '-66vw'; 
-  openSidebarButton.style.right = '0px'; 
+  sidebar.style.right = '-66vw';
+  openSidebarButton.style.right = '0px';
 }
 
 function centerButton() {
   if (!openSidebarButton) return;
   openSidebarButton.style.removeProperty("top");
+}
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  });
 }

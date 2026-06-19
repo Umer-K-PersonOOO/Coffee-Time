@@ -18,6 +18,14 @@
   src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/Roboto-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/Roboto-Medium.ttf") format("truetype");
+}
+
 @supports (height: 1svh) {
   :root {
     --app-vh: 1svh;
@@ -34,10 +42,17 @@ body {
   padding: 0;
   background-color: #f1ede5;
   color: #333;
+  text-transform: lowercase;
   /* display: flex; */
   /* flex-direction: column; */
   /* min-height: calc(var(--app-vh) * 100); */
   width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
 }
 
 .canvallax--fullscreen,
@@ -181,7 +196,7 @@ main {
   -webkit-text-stroke-width: clamp(2px, 0.4vw, 5px);
   -webkit-text-stroke-color: #000;
   font-style: normal;
-  /* font-weight: 400; */
+  font-weight: 700;
   line-height: normal;
 }
 
@@ -189,6 +204,7 @@ main {
 .centered-text h3 {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding if any */
+  font-weight: 700;
 }
 
 .centered-text h2 {

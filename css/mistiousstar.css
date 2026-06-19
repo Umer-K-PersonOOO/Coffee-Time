@@ -135,7 +135,7 @@
   opacity: 0;
   transition: opacity 260ms ease;
   border-radius: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: inherit;
 }
 
 .mistiousstar-portrait-card.image-wrapper:hover .caption {

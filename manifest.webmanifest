@@ -1,0 +1,22 @@
+{
+  "name": "screen savor art and coffee",
+  "short_name": "screen savor",
+  "description": "Coffee and local art in San Francisco Japantown.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f1ede5",
+  "theme_color": "#2e2e2e",
+  "icons": [
+    {
+      "src": "/images/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/images/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

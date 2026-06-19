@@ -1,0 +1,34 @@
+/*
+  Cache-Control: max-age=0, must-revalidate, public
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/sw.js
+  Cache-Control: max-age=0, must-revalidate, public
+
+/manifest.webmanifest
+  Cache-Control: max-age=3600, public
+
+/css/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/js/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/images/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/thumbnail/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/artwork/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/nekopon/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/rumikuu/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public
+
+/candypaintcafe/*
+  Cache-Control: max-age=604800, stale-while-revalidate=86400, public

@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /offline.html
 
 Sitemap: https://coffee-time-6k7.pages.dev/sitemap.xml
