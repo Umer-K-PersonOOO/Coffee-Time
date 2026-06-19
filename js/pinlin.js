@@ -17,6 +17,9 @@ const landscapeArtwork = [
   ["pinlin13.jpg", "Chainsaw Man, Reze", [16, 5, 28]],
 ];
 
+const defaultChalkColor = [247, 252, 255];
+let sharedBodyChalk = null;
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -24,8 +27,6 @@ function shuffleArray(array) {
   }
   return array;
 }
-
-let sharedBodyChalk = null;
 
 function createBodyChalkLayer(index) {
   const layer = document.createElement("div");
@@ -40,20 +41,7 @@ function clampColor(value) {
   return Math.max(0, Math.min(255, Math.round(value)));
 }
 
-function mixColor(color, target, amount) {
-  return color.map((channel, index) => channel + (target[index] - channel) * amount);
-}
-
-function setColorProperties(layer, prefix, color) {
-  const [r, g, b] = color.map(clampColor);
-
-  layer.style.setProperty(`${prefix}-r`, r);
-  layer.style.setProperty(`${prefix}-g`, g);
-  layer.style.setProperty(`${prefix}-b`, b);
-}
-
-function createReusableChalkTexture() {
-  const size = 768;
+function createReusableChalkTexture(size = 512) {
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
@@ -151,7 +139,9 @@ function createReusableChalkTexture() {
 
   ctx.restore();
 
-  for (let i = 0; i < 1600; i++) {
+  const dustCount = Math.round(size * size * 0.0028);
+
+  for (let i = 0; i < dustCount; i++) {
     ctx.fillStyle = `rgba(0, 0, 0, ${rand(0.05, 0.22)})`;
     ctx.fillRect(rand(0, size), rand(0, size), rand(1.4, 6.2), rand(0.6, 2.2));
   }
@@ -159,9 +149,41 @@ function createReusableChalkTexture() {
   return canvas.toDataURL("image/png");
 }
 
+function createStaticBodyChalkBackground() {
+  const layer = createBodyChalkLayer(0);
+  let activeSource = null;
+
+  function setColor(color) {
+    const [r, g, b] = (color || defaultChalkColor).map(clampColor);
+
+    layer.style.setProperty("--chalk-r", r);
+    layer.style.setProperty("--chalk-g", g);
+    layer.style.setProperty("--chalk-b", b);
+    layer.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  }
+
+  setColor(defaultChalkColor);
+  layer.style.setProperty("--chalk-texture", `url("${createReusableChalkTexture()}")`);
+
+  return {
+    setSourceColor(source, color) {
+      activeSource = source;
+      setColor(color);
+    },
+    resetSourceColor(source) {
+      if (activeSource !== source) {
+        return;
+      }
+
+      activeSource = null;
+      setColor(defaultChalkColor);
+    },
+  };
+}
+
 function getBodyChalkBackground() {
   if (!sharedBodyChalk) {
-    sharedBodyChalk = createBodyChalkBackground();
+    sharedBodyChalk = createStaticBodyChalkBackground();
   }
 
   return sharedBodyChalk;
@@ -189,155 +211,16 @@ function createImageWrapper(artwork, className) {
 }
 
 function attachChalkHover(wrapper, artwork) {
-  const chalkAngle = -22 + Math.random() * 28;
-  const chalkColor = artwork[2] || [28, 25, 22];
+  const chalkColor = artwork[2] || defaultChalkColor;
   const bodyChalk = getBodyChalkBackground();
 
   wrapper.addEventListener("pointerenter", () => {
-    bodyChalk.start(wrapper, chalkColor, chalkAngle);
+    bodyChalk.setSourceColor(wrapper, chalkColor);
   });
 
   wrapper.addEventListener("pointerleave", () => {
-    bodyChalk.stop(wrapper);
+    bodyChalk.resetSourceColor(wrapper);
   });
-}
-
-function createBodyChalkBackground() {
-  const fadeTime = 1800;
-  let layerCount = 0;
-  let activeSource = null;
-  let activeLayer = null;
-  const sourceStates = new WeakMap();
-  const hideTimers = new WeakMap();
-
-  function createSourceLayer() {
-    const layer = createBodyChalkLayer(layerCount++);
-    layer.style.display = "none";
-    layer.style.visibility = "hidden";
-    return layer;
-  }
-
-  function sizeLayer(layer) {
-    const pageHeight = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight,
-      document.documentElement.clientHeight
-    );
-
-    layer.style.height = `${pageHeight}px`;
-  }
-
-  function applyChalkState(layer, state) {
-    const color = state.chalkColor || [28, 25, 22];
-    const darkColor = mixColor(color, [0, 0, 0], 0.14);
-
-    setColorProperties(layer, "--chalk", darkColor);
-    setColorProperties(layer, "--chalk-soft", mixColor(color, [255, 255, 255], 0.24));
-    setColorProperties(layer, "--chalk-deep", mixColor(color, [0, 0, 0], 0.44));
-    layer.style.setProperty("--chalk-gradient-angle", `${110 + state.chalkAngle * 0.18}deg`);
-    layer.style.setProperty("--chalk-mask-x", `${Math.round(state.chalkAngle * 17)}px`);
-    layer.style.setProperty("--chalk-texture", state.texture);
-  }
-
-  function getSourceState(source, chalkColor, chalkAngle) {
-    let state = sourceStates.get(source);
-
-    if (!state) {
-      state = {
-        layer: createSourceLayer(),
-        chalkColor,
-        chalkAngle,
-
-        // Each image gets one generated chalk texture.
-        // Re-hovering the same image reuses this exact same background.
-        texture: `url("${createReusableChalkTexture()}")`,
-      };
-
-      applyChalkState(state.layer, state);
-      sourceStates.set(source, state);
-    }
-
-    return state;
-  }
-
-  function clearHideTimer(layer) {
-    const hideTimer = hideTimers.get(layer);
-
-    if (hideTimer) {
-      clearTimeout(hideTimer);
-      hideTimers.delete(layer);
-    }
-  }
-
-  function fadeLayerOut(layer) {
-    if (!layer) return;
-
-    clearHideTimer(layer);
-    layer.style.setProperty("--chalk-fade-time", `${fadeTime}ms`);
-    layer.classList.remove("pinlin-chalk-active");
-
-    const hideTimer = setTimeout(() => {
-      if (!layer.classList.contains("pinlin-chalk-active")) {
-        layer.style.visibility = "hidden";
-        layer.style.display = "none";
-      }
-
-      hideTimers.delete(layer);
-    }, fadeTime);
-
-    hideTimers.set(layer, hideTimer);
-  }
-
-  function showLayer(layer) {
-    clearHideTimer(layer);
-    sizeLayer(layer);
-
-    layer.style.setProperty("--chalk-fade-time", `${fadeTime}ms`);
-    layer.style.display = "block";
-    layer.style.visibility = "visible";
-
-    // Force browser to register display/visibility before opacity changes.
-    void layer.offsetWidth;
-
-    requestAnimationFrame(() => {
-      layer.classList.add("pinlin-chalk-active");
-    });
-  }
-
-  function start(source, chalkColor, chalkAngle = -14) {
-    const state = getSourceState(source, chalkColor, chalkAngle);
-
-    // Same image: bring the same exact layer/texture back up.
-    if (activeSource === source) {
-      showLayer(state.layer);
-      return;
-    }
-
-    // Different image: old layer fades out, new layer fades in.
-    if (activeLayer && activeLayer !== state.layer) {
-      fadeLayerOut(activeLayer);
-    }
-
-    activeSource = source;
-    activeLayer = state.layer;
-    showLayer(activeLayer);
-  }
-
-  function stop(source) {
-    const state = sourceStates.get(source);
-    if (!state) return;
-
-    // Only the currently hovered image controls the visible chalk background.
-    if (activeSource !== source) {
-      return;
-    }
-
-    fadeLayerOut(state.layer);
-    activeSource = null;
-    activeLayer = null;
-  }
-
-  return { start, stop };
 }
 
 function takeDoubleLandscape(landscapes) {
@@ -408,4 +291,5 @@ function renderPinlinArtwork() {
   appendRemainingImages(container, portraits, landscapes, finalLandscape);
 }
 
+getBodyChalkBackground();
 renderPinlinArtwork();

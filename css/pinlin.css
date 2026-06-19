@@ -59,52 +59,35 @@ body>#artwork-stuff {
   left: 0;
   z-index: 0;
   width: 100%;
-  height: 100%;
+  bottom: 0;
+  min-height: 100%;
   pointer-events: none;
-  visibility: hidden;
-  opacity: 0;
-  mix-blend-mode: multiply;
+  visibility: visible;
+  opacity: 1;
+  contain: paint;
 
-  --chalk-r: 24;
-  --chalk-g: 22;
-  --chalk-b: 19;
-  --chalk-soft-r: 82;
-  --chalk-soft-g: 79;
-  --chalk-soft-b: 75;
-  --chalk-deep-r: 16;
-  --chalk-deep-g: 14;
-  --chalk-deep-b: 12;
-  --chalk-gradient-angle: 110deg;
-  --chalk-mask-x: 0px;
   --chalk-texture: none;
-  --chalk-fade-time: 2.5s;
-  background:
-    radial-gradient(
-      circle at 24% 22%,
-      rgba(var(--chalk-soft-r), var(--chalk-soft-g), var(--chalk-soft-b), 0.76),
-      transparent 42%
-    ),
-    linear-gradient(
-      var(--chalk-gradient-angle),
-      rgba(var(--chalk-r), var(--chalk-g), var(--chalk-b), 1),
-      rgba(var(--chalk-deep-r), var(--chalk-deep-g), var(--chalk-deep-b), 0.96)
-    );
-  background-size: 100% 100%;
+  --chalk-r: 247;
+  --chalk-g: 252;
+  --chalk-b: 255;
+  background-color: rgb(var(--chalk-r), var(--chalk-g), var(--chalk-b));
+  transition: background-color 700ms ease;
   -webkit-mask-image: var(--chalk-texture);
   mask-image: var(--chalk-texture);
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
   -webkit-mask-repeat: repeat;
   mask-repeat: repeat;
-  -webkit-mask-size: 768px 768px;
-  mask-size: 768px 768px;
-  -webkit-mask-position: var(--chalk-mask-x) 0;
-  mask-position: var(--chalk-mask-x) 0;
-  transition: opacity var(--chalk-fade-time) ease;
+  -webkit-mask-size: 512px 512px;
+  mask-size: 512px 512px;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
 }
 
-.pinlin-body-chalk-fill.pinlin-chalk-active {
-  opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+  .pinlin-body-chalk-fill {
+    transition-duration: 120ms;
+  }
 }
 
 .caption {
