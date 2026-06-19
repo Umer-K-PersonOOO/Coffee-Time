@@ -1,19 +1,21 @@
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Regular'), local('Roboto-Regular'), url('./fonts/roboto-v20-latin-regular.woff2') format('woff2'), url('./fonts/roboto-v20-latin-regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url('./fonts/roboto-v20-latin-700.woff2') format('woff2'), url('./fonts/roboto-v20-latin-700.woff') format('woff');
-}
-
 :root {
   --app-vh: 1vh;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Regular"), local("Roboto-Regular"), url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/Roboto-Bold.ttf") format("truetype");
 }
 
 @supports (height: 1svh) {
@@ -27,7 +29,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f1ede5;
@@ -77,6 +79,25 @@ header:hover {
   align-items: flex-end;
 }
 
+.hamburger {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  line-height: 0;
+  padding: 0;
+}
+
+.hamburger svg {
+  display: block;
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
 
 .ham-menu nav {
   display: none;
@@ -108,6 +129,26 @@ main {
   align-items: center;
 }
 
+.offline-page {
+  min-height: calc(var(--app-vh) * 100);
+  padding: 2rem;
+  text-align: center;
+}
+
+.offline-message {
+  max-width: 34rem;
+}
+
+.offline-message h1 {
+  font-size: clamp(2.25rem, 10vw, 5rem);
+  margin: 0 0 1rem;
+}
+
+.offline-message a {
+  color: #111;
+  font-weight: 700;
+}
+
 .image-container {
   width: 100%;
   height: calc(var(--app-vh) * 80);
@@ -116,9 +157,13 @@ main {
   position: relative;
 }
 
+.image-container picture,
 .image-container img {
   width: 100%;
   height: 100%;
+}
+
+.image-container img {
   object-fit: cover;
   object-position: center top;
 }
@@ -180,7 +225,7 @@ main {
 
 .artists-socials-pfp-middle {
   position: absolute;
-  height: calc(var(--app-vh) * 30); 
+  height: calc(var(--app-vh) * 30);
   top: calc(var(--app-vh) * 65);
   left: 50%;
   transform: translateX(-50%);
@@ -269,6 +314,17 @@ main {
   padding: 10px 0;
   background-color: #333;
   color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 
